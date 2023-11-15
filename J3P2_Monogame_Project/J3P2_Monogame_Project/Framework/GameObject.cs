@@ -6,7 +6,7 @@ namespace J3P2_Monogame_Project.Framework
 {
     internal class GameObject
     {
-        public Vector2 Position;
+        protected Vector2 _position;
         protected Texture2D _texture;
         protected float _scale;
         GraphicsDevice _graphicsDevice;
@@ -21,8 +21,8 @@ namespace J3P2_Monogame_Project.Framework
                 // be cause the backingfield is nullable, we get the value cuz struct will be of type Nullable<Rectangle>
                 Rectangle rect = _hitbox.Value;
                 // set the position of the hitbox according to the objects position
-                rect.X = (int)Position.X - (_texture.Width / 2);
-                rect.Y = (int)Position.Y - (_texture.Height / 2);
+                rect.X = (int)_position.X - (_texture.Width / 2);
+                rect.Y = (int)_position.Y - (_texture.Height / 2);
                 // return the final hitbox
                 return rect;
             }
@@ -30,48 +30,47 @@ namespace J3P2_Monogame_Project.Framework
        /// <summary>
        /// This is for a sprite gameobject
        /// </summary>
-       /// <param name="pos"></param>
-       /// <param name="scale"></param>
-       /// <param name="texture"></param>
-        public GameObject(Vector2 pos, float scale, Texture2D texture)
+       /// <param name="pPosition"></param>
+       /// <param name="pScale"></param>
+       /// <param name="pTexture"></param>
+        public GameObject(Vector2 pPosition, float pScale, Texture2D pTexture)
         {
-            Position = pos;
-            _scale = scale;
-            _texture = texture;
+            _position = pPosition;
+            _scale = pScale;
+            _texture = pTexture;
         }
         /// <summary>
         /// This is for a no-sprite gameobject
         /// </summary>
-        /// <param name="pos"></param>
-        /// <param name="scale"></param>
-        /// <param name="texture"></param>
+        /// <param name="pPosition"></param>
+        /// <param name="pScale"></param>
         /// <param name="pGraphicsDevice"></param>
-        public GameObject(Vector2 pos, float scale, GraphicsDevice pGraphicsDevice)
+        public GameObject(Vector2 pPosition, float pScale, GraphicsDevice pGraphicsDevice)
         {
-            Position = pos;
-            _scale = scale;
+            _position = pPosition;
+            _scale = pScale;
             _graphicsDevice = pGraphicsDevice;
         }
         public virtual void Update()
         {
             
         } 
-        public virtual void Draw(SpriteBatch spriteBatch)
+        public virtual void Draw(SpriteBatch pSpriteBatch)
         {
-            spriteBatch.Draw(_texture, new Vector2(Position.X - (_texture.Width / 2), Position.Y - (_texture.Height / 2)), null, Color.White, 0, Vector2.Zero, _scale, SpriteEffects.None, 0);
+            pSpriteBatch.Draw(_texture, new Vector2(_position.X - (_texture.Width / 2), _position.Y - (_texture.Height / 2)), null, Color.White, 0, Vector2.Zero, _scale, SpriteEffects.None, 0);
         }
         /// <summary>
         /// Draw the rectangle.
         /// </summary>
-        /// <param name="spriteBatch"></param>
-        public virtual void DrawRectangle(SpriteBatch spriteBatch)
+        /// <param name="pSpriteBatch"></param>
+        public virtual void DrawRectangle(SpriteBatch pSpriteBatch)
         {
             // make a new Texture 1x1
             _texture = new Texture2D(_graphicsDevice, 1, 1);
             // Set the colour of the texture to red
             _texture.SetData(new Color[] {Color.Red});
             // draw the rectangle
-            spriteBatch.Draw(_texture, new Rectangle((int)Position.X, (int)Position.Y, 1 * (int)_scale, 1 * (int)_scale), Color.White);
+            pSpriteBatch.Draw(_texture, new Rectangle((int)_position.X, (int)_position.Y, 1 * (int)_scale, 1 * (int)_scale), Color.White);
         }
     }
 }
