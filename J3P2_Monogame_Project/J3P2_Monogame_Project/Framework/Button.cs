@@ -39,9 +39,9 @@ namespace J3P2_Monogame_Project.Framework
                     break;            
             }
         }
-        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch)
         {
-            base.Draw(gameTime, spriteBatch);
+
         }
         protected void NormalMode()
         {
