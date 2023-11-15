@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace J3P2_Monogame_Project.Simon
+namespace J3P2_Monogame_Project.monoPong.Willemijn
 {
     public class Game1 : Game
     {
