@@ -51,7 +51,7 @@ namespace J3P2_Monogame_Project.Framework
             _scale = pScale;
             _graphicsDevice = pGraphicsDevice;
         }
-        public virtual void Update()
+        public virtual void Update(GameTime pGameTime)
         {
             
         } 
