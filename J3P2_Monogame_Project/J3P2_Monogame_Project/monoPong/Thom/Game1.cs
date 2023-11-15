@@ -1,6 +1,8 @@
-﻿using Microsoft.Xna.Framework;
+﻿using J3P2_Monogame_Project.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
 
 namespace J3P2_Monogame_Project.monoPong.Thom
 {
@@ -8,6 +10,8 @@ namespace J3P2_Monogame_Project.monoPong.Thom
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        Ball _ball;
+        List<GameObject> _objects = new List<GameObject>();
 
         public Game1()
         {
@@ -26,7 +30,12 @@ namespace J3P2_Monogame_Project.monoPong.Thom
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+            _ball = new Ball(new Vector2(100, 100), 10, GraphicsDevice);
 
+
+
+
+            _objects.Add(_ball);
             // TODO: use this.Content to load your game content here
         }
 
@@ -34,17 +43,23 @@ namespace J3P2_Monogame_Project.monoPong.Thom
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
             // TODO: Add your update logic here
-
-            base.Update(gameTime);
+            for (int i = 0; i < _objects.Count; i++)
+            {
+                _objects[i].Update(gameTime);
+            }
+            _spriteBatch.End();
         }
 
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            // TODO: Add your drawing code here
+            _spriteBatch.Begin();
+            for (int i = 0; i < _objects.Count; i++)
+            {
+                _objects[i].DrawRectangle(_spriteBatch);
+            }
+            _spriteBatch.End();
 
             base.Draw(gameTime);
         }
