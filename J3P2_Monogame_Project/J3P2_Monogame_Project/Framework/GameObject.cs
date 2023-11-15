@@ -33,7 +33,7 @@ namespace J3P2_Monogame_Project.Framework
             _scale = scale;
             _texture = texture;
         }
-        public void Update()
+        public virtual void Update()
         {
             
         } 

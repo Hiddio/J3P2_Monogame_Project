@@ -1,6 +1,8 @@
-﻿using Microsoft.Xna.Framework;
+﻿using J3P2_Monogame_Project.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Security.AccessControl;
 
 namespace J3P2_Monogame_Project.monoPong.Simon
 {
@@ -8,7 +10,6 @@ namespace J3P2_Monogame_Project.monoPong.Simon
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
