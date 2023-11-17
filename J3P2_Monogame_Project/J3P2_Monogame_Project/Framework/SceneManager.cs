@@ -16,10 +16,10 @@ namespace J3P2_Monogame_Project.Framework
             Level2,
         }
         GameScene _currentScene;
-        public SceneManager(GraphicsDeviceManager graphics, SpriteBatch spriteBatch)
+        public SceneManager(GraphicsDeviceManager pGraphics, SpriteBatch pSpriteBatch)
         {
-            _graphics = graphics;
-            _spriteBatch = spriteBatch;
+            _graphics = pGraphics;
+            _spriteBatch = pSpriteBatch;
         }
 
         public void Update(GameTime gameTime)

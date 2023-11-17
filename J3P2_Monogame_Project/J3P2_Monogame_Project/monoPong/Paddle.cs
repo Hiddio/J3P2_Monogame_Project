@@ -10,10 +10,12 @@ namespace J3P2_Monogame_Project.monoPong
 {
     class Paddle : Framework.GameObject
     {
+        int _playerNumber;
 
-        public Paddle(Vector2 pos, float scale, GraphicsDevice pGraphicsDevice) : base(pos, scale, pGraphicsDevice)
+        public Paddle(Vector2 pPosition, float pScale, GraphicsDevice pGraphicsDevice) : base(pPosition, pScale, pGraphicsDevice)
         {
 
         }
+
     }
 }
