@@ -20,7 +20,7 @@ namespace J3P2_Monogame_Project.Framework
             _texture = texture;
             // _textFont = game1.Content.Load<SpriteFont>("BrandonGrotesqueBold");
         }
-        public override void Update()
+        public override void Update(GameTime pGameTime)
         {
             _mouseState = Mouse.GetState();
             _mousePosition = new Point(_mouseState.X, _mouseState.Y);
