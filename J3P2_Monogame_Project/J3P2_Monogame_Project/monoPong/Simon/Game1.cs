@@ -11,7 +11,7 @@ namespace J3P2_Monogame_Project.monoPong.Simon
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        GameObject testPaddle;
+        Paddle testPaddle;
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -29,7 +29,7 @@ namespace J3P2_Monogame_Project.monoPong.Simon
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            testPaddle = new GameObject(new Vector2(50, 50), 100, GraphicsDevice);
+            testPaddle = new Paddle(new Vector2(50, 50), 0.5f, Content.Load<Texture2D>("Paddle"));
             // TODO: use this.Content to load your game content here
         }
 
@@ -39,7 +39,7 @@ namespace J3P2_Monogame_Project.monoPong.Simon
                 Exit();
 
             // TODO: Add your update logic here
-
+            testPaddle.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -49,8 +49,7 @@ namespace J3P2_Monogame_Project.monoPong.Simon
 
             // TODO: Add your drawing code here
             _spriteBatch.Begin();
-            Console.WriteLine("hi");
-            testPaddle.DrawRectangle(_spriteBatch);
+            testPaddle.Draw(_spriteBatch);
             _spriteBatch.End();
 
             base.Draw(gameTime);
