@@ -15,9 +15,9 @@ namespace J3P2_Monogame_Project.Framework
             Pressed
         }
         protected State _currentState;
-        public Button(Vector2 pos, float scale, Texture2D texture, int speed) : base(pos, scale, texture)
+        public Button(Vector2 pPosition, float pScale, Texture2D pTexture, int pSpeed) : base(pPosition, pScale, pTexture)
         {
-            _texture = texture;
+            _texture = pTexture;
             // _textFont = game1.Content.Load<SpriteFont>("BrandonGrotesqueBold");
         }
         public override void Update(GameTime pGameTime)
@@ -39,7 +39,7 @@ namespace J3P2_Monogame_Project.Framework
                     break;            
             }
         }
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch pSpriteBatch)
         {
 
         }

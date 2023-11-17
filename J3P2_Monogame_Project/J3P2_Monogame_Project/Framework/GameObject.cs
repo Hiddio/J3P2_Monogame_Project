@@ -16,7 +16,7 @@ namespace J3P2_Monogame_Project.Framework
             // only has getter, it cannot be set to a value from anywhere
             get
             {
-                // if the backing field is null, then we set it to a new Rectangle with the correct scale.
+                // if the backing field (our _hitbox rectangle) is null, then we set it to a new Rectangle with the correct scale.
                 _hitbox ??= new(0, 0, (int)(_texture.Width * _scale), (int)(_texture.Height * _scale));
                 // be cause the backingfield is nullable, we get the value cuz struct will be of type Nullable<Rectangle>
                 Rectangle rect = _hitbox.Value;
