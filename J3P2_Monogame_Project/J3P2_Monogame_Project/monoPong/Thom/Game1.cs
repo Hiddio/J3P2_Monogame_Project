@@ -30,7 +30,7 @@ namespace J3P2_Monogame_Project.monoPong.Thom
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            _ball = new Ball(new Vector2(100, 100), 10, GraphicsDevice);
+            _ball = new Ball(new Vector2(100, 100), 10, GraphicsDevice, new Rectangle(0,0,0,0));
 
 
 
@@ -48,7 +48,6 @@ namespace J3P2_Monogame_Project.monoPong.Thom
             {
                 _objects[i].Update(gameTime);
             }
-            _spriteBatch.End();
         }
 
         protected override void Draw(GameTime gameTime)
