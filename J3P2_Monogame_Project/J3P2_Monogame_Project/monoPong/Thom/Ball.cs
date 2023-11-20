@@ -20,6 +20,10 @@ namespace J3P2_Monogame_Project.monoPong.Thom
             UpdateHitbox();
             BallMovement(pGameTime);
         }
+        public override void Start()
+        {
+            _hitbox = new Rectangle(20, 20, 20, 20);
+        }
         /// <summary>
         /// Clamps the ball so it can't leave the game-window.
         /// </summary>

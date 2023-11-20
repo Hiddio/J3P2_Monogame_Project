@@ -22,8 +22,6 @@ namespace J3P2_Monogame_Project.monoPong.Thom
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
-
             base.Initialize();
         }
 
@@ -32,10 +30,12 @@ namespace J3P2_Monogame_Project.monoPong.Thom
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             _ball = new Ball(new Vector2(100, 100), 10, GraphicsDevice, new Rectangle(0,0,0,0));
 
-
-
-
+            //Objects
             _objects.Add(_ball);
+            for (int i = 0; i < _objects.Count; i++)
+            {
+                _objects[i].Start();
+            }
             // TODO: use this.Content to load your game content here
         }
 
