@@ -7,7 +7,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Monogame_jaar3_WillemijnSterken.Assignment2;
 using SharpDX.Direct3D9;
 
 namespace J3P2_Monogame_Project.Willemijn.Assignment3

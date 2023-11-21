@@ -20,7 +20,7 @@ namespace J3P2_Monogame_Project.Framework
             
         }
 
-        public virtual void LoadContent()
+        public virtual void LoadContent(SceneManager sceneManager)
         {
 
         }

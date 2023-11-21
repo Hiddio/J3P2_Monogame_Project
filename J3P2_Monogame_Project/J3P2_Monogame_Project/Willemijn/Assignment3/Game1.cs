@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Monogame_jaar3_WillemijnSterken.Assignment1;
 using SharpDX.MediaFoundation;
 using System;
 using System.Collections.Generic;
