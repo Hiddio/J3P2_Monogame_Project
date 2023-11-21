@@ -9,13 +9,8 @@ namespace J3P2_Monogame_Project.Framework
     {
         GraphicsDeviceManager _graphics;
         SpriteBatch _spriteBatch;
-        enum GameScene
-        {
-            MainMenu,
-            Level1,
-            Level2,
-        }
-        GameScene _currentScene;
+        List<Scene> _scenes;
+        Scene _currentScene;
         public SceneManager(GraphicsDeviceManager pGraphics, SpriteBatch pSpriteBatch)
         {
             _graphics = pGraphics;
@@ -36,13 +31,13 @@ namespace J3P2_Monogame_Project.Framework
             switch(sceneNumber)
             {
                 case 0:
-                    _currentScene = (GameScene)0;
+                    _currentScene = _scenes[0];
                     break;
                 case 1:
-                    _currentScene = (GameScene)1;
+                    _currentScene = _scenes[1];
                     break;
                 case 2:
-                    _currentScene = (GameScene)2;
+                    _currentScene = _scenes[2];
                     break;
             }
         }
