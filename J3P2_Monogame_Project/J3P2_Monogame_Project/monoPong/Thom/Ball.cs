@@ -7,8 +7,10 @@ namespace J3P2_Monogame_Project.monoPong.Thom
 {
     internal class Ball : GameObject
     {
-        GraphicsDevice _device;
-        float _speed = 150f;
+        private GraphicsDevice _device;
+        private float _speed = 150f;
+        private Vector2 _velocity = new Vector2(1,1);
+        private Random rng = new Random();
         public Ball(Vector2 pPosition, float pScale, GraphicsDevice pGraphicsDevice, Rectangle pRectangle ) : base(pPosition, pScale, pGraphicsDevice, pRectangle)
         {
             _device = pGraphicsDevice;
@@ -20,9 +22,9 @@ namespace J3P2_Monogame_Project.monoPong.Thom
             UpdateHitbox();
             BallMovement(pGameTime);
         }
-        public override void Start()
+        public override void Start() 
         {
-            _hitbox = new Rectangle(20, 20, 20, 20);
+            GetRandomDirection();
         }
         /// <summary>
         /// Clamps the ball so it can't leave the game-window.
@@ -32,9 +34,7 @@ namespace J3P2_Monogame_Project.monoPong.Thom
             float windowWidth = _device.Viewport.Width;
             float windowHeight = _device.Viewport.Height;
 
-            _position = new Vector2(Math.Clamp(_position.X, 0, windowWidth - _hitbox.Value.Width), Math.Clamp(_position.Y, 0, windowHeight - _hitbox.Value.Width));
-
-            Console.WriteLine(_hitbox.Value.Width);
+            _position = new Vector2(Math.Clamp(_position.X, 0, windowWidth - _hitbox.Value.Width), Math.Clamp(_position.Y, 0, windowHeight - _hitbox.Value.Height));
         }
         /// <summary>
         /// Handles all the logic for the ball's movement.
@@ -42,8 +42,19 @@ namespace J3P2_Monogame_Project.monoPong.Thom
         /// <param name="pGameTime"></param>
         private void BallMovement(GameTime pGameTime)
         {
-            _position.X += (float)pGameTime.ElapsedGameTime.TotalSeconds * _speed;
-            _position.Y += (float)pGameTime.ElapsedGameTime.TotalSeconds * _speed;
+            _position = _position + _velocity * (float)pGameTime.ElapsedGameTime.TotalSeconds * _speed;
+
+
+            //Invert new velocity
+            if (_position.X < 0 || _position.X > _device.Viewport.Width - _hitbox.Value.Width) 
+            {
+                _velocity.X *= -1;
+            }
+
+            if (_position.Y < 0 || _position.Y > _device.Viewport.Height - _hitbox.Value.Height)
+            {
+                _velocity.Y *= -1;
+            }
         }
         /// <summary>
         /// Update the ball's hitbox.
@@ -52,14 +63,14 @@ namespace J3P2_Monogame_Project.monoPong.Thom
         {
             _hitbox = new Rectangle((int)_scale, (int)_scale, (int)_scale, (int)_scale);
         }
+        private void BounceBall()
+        {
+
+        }
         private Vector2 GetRandomDirection()
         {
-            return new Vector2(0,0);
+            return new Vector2(rng.Next(-2,3));
         }
-
-
-
-        // give ball speed
 
 
 
