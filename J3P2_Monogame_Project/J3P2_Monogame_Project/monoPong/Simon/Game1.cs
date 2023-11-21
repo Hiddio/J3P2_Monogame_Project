@@ -11,7 +11,10 @@ namespace J3P2_Monogame_Project.monoPong.Simon
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        GameObject testPaddle;
+        Paddle testPaddle;
+        Paddle testPaddle2;
+        Paddle testPaddle3;
+        Paddle testPaddle4;
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -29,7 +32,10 @@ namespace J3P2_Monogame_Project.monoPong.Simon
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            testPaddle = new GameObject(new Vector2(50, 50), 100, GraphicsDevice);
+            testPaddle = new Paddle(new Vector2(50, 50), 0.5f, Content.Load<Texture2D>("Paddle"), 0);
+            testPaddle2 = new Paddle(new Vector2(750, 50), 0.5f, Content.Load<Texture2D>("Paddle"), 1);
+            testPaddle3 = new Paddle(new Vector2(450, 50), 0.5f, Content.Load<Texture2D>("PaddleHorizontal"), 2);
+            testPaddle4 = new Paddle(new Vector2(450, 450), 0.5f, Content.Load<Texture2D>("PaddleHorizontal"), 3);
             // TODO: use this.Content to load your game content here
         }
 
@@ -39,7 +45,10 @@ namespace J3P2_Monogame_Project.monoPong.Simon
                 Exit();
 
             // TODO: Add your update logic here
-
+            testPaddle.Update(gameTime);
+            testPaddle2.Update(gameTime);
+            testPaddle3.Update(gameTime);
+            testPaddle4.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -49,8 +58,10 @@ namespace J3P2_Monogame_Project.monoPong.Simon
 
             // TODO: Add your drawing code here
             _spriteBatch.Begin();
-            Console.WriteLine("hi");
-            testPaddle.DrawRectangle(_spriteBatch);
+            testPaddle.Draw(_spriteBatch);
+            testPaddle2.Draw(_spriteBatch);
+            testPaddle3.Draw(_spriteBatch);
+            testPaddle4.Draw(_spriteBatch);
             _spriteBatch.End();
 
             base.Draw(gameTime);
