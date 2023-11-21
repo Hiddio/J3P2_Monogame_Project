@@ -23,6 +23,11 @@ namespace J3P2_Monogame_Project.monoPong.Thom
         protected override void Initialize()
         {
             base.Initialize();
+
+            for (int i = 0; i < _objects.Count; i++)
+            {
+                _objects[i].Start();
+            }
         }
 
         protected override void LoadContent()

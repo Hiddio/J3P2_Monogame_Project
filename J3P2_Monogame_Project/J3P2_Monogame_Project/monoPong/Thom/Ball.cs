@@ -2,14 +2,15 @@
 using Microsoft.Xna.Framework.Graphics;
 using J3P2_Monogame_Project.Framework;
 using System;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace J3P2_Monogame_Project.monoPong.Thom
 {
     internal class Ball : GameObject
     {
         private GraphicsDevice _device;
-        private float _speed = 150f;
-        private Vector2 _velocity = new Vector2(1,1);
+        private float _speed = 150.0f;
+        private Vector2 _velocity = Vector2.Zero;
         private Random rng = new Random();
         public Ball(Vector2 pPosition, float pScale, GraphicsDevice pGraphicsDevice, Rectangle pRectangle ) : base(pPosition, pScale, pGraphicsDevice, pRectangle)
         {
@@ -24,7 +25,8 @@ namespace J3P2_Monogame_Project.monoPong.Thom
         }
         public override void Start() 
         {
-            GetRandomDirection();
+            _velocity = GetRandomDirection();
+            Console.WriteLine(_velocity);
         }
         /// <summary>
         /// Clamps the ball so it can't leave the game-window.
@@ -69,7 +71,7 @@ namespace J3P2_Monogame_Project.monoPong.Thom
         }
         private Vector2 GetRandomDirection()
         {
-            return new Vector2(rng.Next(-2,3));
+            return new Vector2((float)rng.NextDouble(), (float)rng.NextDouble());
         }
 
 
