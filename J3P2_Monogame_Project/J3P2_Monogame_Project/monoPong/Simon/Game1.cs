@@ -41,6 +41,11 @@ namespace J3P2_Monogame_Project.monoPong.Simon
 
         protected override void Update(GameTime gameTime)
         {
+            Console.WriteLine(GamePad.GetState(PlayerIndex.One));
+            Console.WriteLine(GamePad.GetState(PlayerIndex.Two));
+            Console.WriteLine(GamePad.GetState(PlayerIndex.Three));
+            Console.WriteLine(GamePad.GetState(PlayerIndex.Four));
+
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
