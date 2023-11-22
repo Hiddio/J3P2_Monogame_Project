@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using J3P2_Monogame_Project.monoPong.Simon;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
@@ -11,10 +12,12 @@ namespace J3P2_Monogame_Project.Framework
         SpriteBatch _spriteBatch;
         List<Scene> _scenes;
         Scene _currentScene;
-        public SceneManager(GraphicsDeviceManager pGraphics, SpriteBatch pSpriteBatch)
+        Game1 _game;
+        public SceneManager(GraphicsDeviceManager pGraphics, SpriteBatch pSpriteBatch, Game1 pGame)
         {
             _graphics = pGraphics;
             _spriteBatch = pSpriteBatch;
+            _game = pGame;
         }
 
         public void Update(GameTime gameTime)
@@ -40,6 +43,10 @@ namespace J3P2_Monogame_Project.Framework
                     _currentScene = _scenes[2];
                     break;
             }
+        }
+        public void CloseGame()
+        {
+            _game.Exit();
         }
 
     }
