@@ -1,4 +1,4 @@
-﻿using J3P2_Monogame_Project.monoPong.Simon;
+﻿using J3P2_Monogame_Project.monoPong.Willemijn;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;

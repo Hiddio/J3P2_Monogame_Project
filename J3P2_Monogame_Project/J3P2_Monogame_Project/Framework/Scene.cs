@@ -6,9 +6,12 @@ namespace J3P2_Monogame_Project.Framework
     {
         protected SpriteBatch _spriteBatch;
         protected GraphicsDeviceManager _graphics;
-        public Scene(SpriteBatch pSpriteBatch, GraphicsDeviceManager pGraphics, float pScale)
+        protected Vector2 _scale;
+        public Scene(SpriteBatch pSpriteBatch, GraphicsDeviceManager pGraphics, Vector2 pScale)
         {
-            
+            _scale= pScale;
+            _spriteBatch = pSpriteBatch;
+            _graphics = pGraphics;
         }
         public virtual void Update()
         {

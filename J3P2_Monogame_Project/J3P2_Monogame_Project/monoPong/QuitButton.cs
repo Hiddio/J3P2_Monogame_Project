@@ -14,7 +14,7 @@ namespace J3P2_Monogame_Project.monoPong
     class QuitButton : Button
     {
         SceneManager _sceneManager;
-        public QuitButton(Vector2 pPosition, float pScale, GraphicsDevice pGraphics, Rectangle pRectangle, SceneManager pSceneManager) : base(pPosition, pScale, pGraphics, pRectangle)
+        public QuitButton(Vector2 pPosition, Vector2 pScale, GraphicsDevice pGraphics, Rectangle pRectangle, SceneManager pSceneManager) : base(pPosition, pScale, pGraphics, pRectangle)
         {
             _sceneManager = pSceneManager;
         }

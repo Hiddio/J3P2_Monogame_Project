@@ -8,7 +8,7 @@ namespace J3P2_Monogame_Project.Framework
     {
         protected Vector2 _position;
         protected Texture2D _texture;
-        protected float _scale;
+        protected Vector2 _scale;
         GraphicsDevice _graphicsDevice;
         protected Rectangle? _hitbox;
         public Rectangle HitBox
@@ -17,7 +17,7 @@ namespace J3P2_Monogame_Project.Framework
             get
             {
                 // if the backing field (our _hitbox rectangle) is null, then we set it to a new Rectangle with the correct scale.
-                _hitbox ??= new(0, 0, (int)(_texture.Width * _scale), (int)(_texture.Height * _scale));
+                _hitbox ??= new(0, 0, (int)(_texture.Width * _scale.X), (int)(_texture.Height * _scale.Y));
                 // be cause the backingfield is nullable, we get the value cuz struct will be of type Nullable<Rectangle>
                 Rectangle rect = _hitbox.Value;
                 // set the position of the hitbox according to the objects position
@@ -33,7 +33,7 @@ namespace J3P2_Monogame_Project.Framework
        /// <param name="pPosition"></param>
        /// <param name="pScale"></param>
        /// <param name="pTexture"></param>
-        public GameObject(Vector2 pPosition, float pScale, Texture2D pTexture)
+        public GameObject(Vector2 pPosition, Vector2 pScale, Texture2D pTexture)
         {
             _position = pPosition;
             _scale = pScale;
@@ -45,7 +45,7 @@ namespace J3P2_Monogame_Project.Framework
         /// <param name="pPosition"></param>
         /// <param name="pScale"></param>
         /// <param name="pGraphicsDevice"></param>
-        public GameObject(Vector2 pPosition, float pScale, GraphicsDevice pGraphicsDevice, Rectangle pRectangle)
+        public GameObject(Vector2 pPosition, Vector2 pScale, GraphicsDevice pGraphicsDevice, Rectangle pRectangle)
         {
             _position = pPosition;
             _scale = pScale;
