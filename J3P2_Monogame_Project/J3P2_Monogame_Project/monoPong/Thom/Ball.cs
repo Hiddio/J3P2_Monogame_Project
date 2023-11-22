@@ -2,7 +2,6 @@
 using Microsoft.Xna.Framework.Graphics;
 using J3P2_Monogame_Project.Framework;
 using System;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace J3P2_Monogame_Project.monoPong.Thom
 {
@@ -11,7 +10,7 @@ namespace J3P2_Monogame_Project.monoPong.Thom
         private GraphicsDevice _device;
         private float _speed = 1500.0f;
         private Vector2 _velocity = Vector2.Zero;
-        private Random rng = new Random();
+        private Random _rng = new Random();
         public Ball(Vector2 pPosition, float pScale, GraphicsDevice pGraphicsDevice, Rectangle pRectangle ) : base(pPosition, pScale, pGraphicsDevice, pRectangle)
         {
             _device = pGraphicsDevice;
@@ -25,7 +24,9 @@ namespace J3P2_Monogame_Project.monoPong.Thom
         }
         public override void Start() 
         {
+            SpawnBallInMiddle();
             _velocity = GetRandomDirection();
+            _velocity.Normalize();
             Console.WriteLine(_velocity);
         }
         /// <summary>
@@ -45,6 +46,7 @@ namespace J3P2_Monogame_Project.monoPong.Thom
         private void BallMovement(GameTime pGameTime)
         {
             //Update position every frame
+            
             _position = _position + _velocity * (float)pGameTime.ElapsedGameTime.TotalSeconds * _speed;
             //Invert velocity
             if (_position.X < 0 || _position.X > _device.Viewport.Width - _hitbox.Value.Width) 
@@ -68,20 +70,24 @@ namespace J3P2_Monogame_Project.monoPong.Thom
         {
 
         }
+        private void SpawnBallInMiddle()
+        {
+            _position = new Vector2(_device.Viewport.Width / 2, _device.Viewport.Height / 2);
+        }
         private Vector2 GetRandomDirection()
         {
-            return new Vector2((float)rng.NextDouble(), (float)rng.NextDouble());
+            /*
+             * 
+             * GET V2 X,Y RANDOM NUMBERS BETWEEN 60,-60 AND 150,210
+             * 
+             * 
+             * */
+            Random random = new Random();
+            // Returns a random floating-point number between -1 and 1
+            return new Vector2((float)(random.NextDouble() * 2 - 1), (float)(random.NextDouble() * 2 - 1));
         }
 
-
-
         // bounce ball against walls
-
-
-
-
-
-
 
         // ball draw
         public override void DrawRectangle(SpriteBatch pSpriteBatch)
