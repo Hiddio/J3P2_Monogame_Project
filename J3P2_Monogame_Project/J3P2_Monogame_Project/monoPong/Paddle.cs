@@ -35,8 +35,7 @@ namespace J3P2_Monogame_Project.monoPong
             KeyboardState keyState = Keyboard.GetState();
             GamePadState padOneState = GamePad.GetState(PlayerIndex.One);
             GamePadState padTwoState = GamePad.GetState(PlayerIndex.Two);
-            _direction.Y = 0;
-
+            _direction = new Vector2(0, 0);
             
             switch (paddleNum)
             {
