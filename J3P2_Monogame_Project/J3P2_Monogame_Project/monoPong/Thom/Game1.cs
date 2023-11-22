@@ -10,8 +10,8 @@ namespace J3P2_Monogame_Project.monoPong.Thom
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        Ball _ball;
-        List<GameObject> _objects = new List<GameObject>();
+        private Ball _ball;
+        private List<GameObject> _objects = new List<GameObject>();
 
         public Game1()
         {
@@ -33,14 +33,10 @@ namespace J3P2_Monogame_Project.monoPong.Thom
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            _ball = new Ball(new Vector2(100, 100), 10, GraphicsDevice, new Rectangle(0,0,0,0));
+            _ball = new Ball(new Vector2(100, 100), 10, GraphicsDevice, new Rectangle(0,0,0,0), 150.0f);
 
             //Objects
             _objects.Add(_ball);
-            for (int i = 0; i < _objects.Count; i++)
-            {
-                _objects[i].Start();
-            }
             // TODO: use this.Content to load your game content here
         }
 

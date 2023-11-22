@@ -9,7 +9,7 @@ namespace J3P2_Monogame_Project.Framework
         protected Vector2 _position;
         protected Texture2D _texture;
         protected float _scale;
-        GraphicsDevice _graphicsDevice;
+        protected GraphicsDevice _graphicsDevice;
         protected Rectangle? _hitbox;
         public Rectangle HitBox
         {

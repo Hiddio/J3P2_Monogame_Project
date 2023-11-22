@@ -7,13 +7,11 @@ namespace J3P2_Monogame_Project.monoPong.Thom
 {
     internal class Ball : GameObject
     {
-        private GraphicsDevice _device;
-        private float _speed = 1500.0f;
+        private float _speed;
         private Vector2 _velocity = Vector2.Zero;
-        private Random _rng = new Random();
-        public Ball(Vector2 pPosition, float pScale, GraphicsDevice pGraphicsDevice, Rectangle pRectangle ) : base(pPosition, pScale, pGraphicsDevice, pRectangle)
+        public Ball(Vector2 pPosition, float pScale, GraphicsDevice pGraphicsDevice, Rectangle pRectangle, float pSpeed) : base(pPosition, pScale, pGraphicsDevice, pRectangle)
         {
-            _device = pGraphicsDevice;
+            _speed = pSpeed;
         }
         // ball update
         public override void Update(GameTime pGameTime)
@@ -34,8 +32,8 @@ namespace J3P2_Monogame_Project.monoPong.Thom
         /// </summary>
         private void ClampBall()
         {
-            float windowWidth = _device.Viewport.Width;
-            float windowHeight = _device.Viewport.Height;
+            float windowWidth = _graphicsDevice.Viewport.Width;
+            float windowHeight = _graphicsDevice.Viewport.Height;
 
             _position = new Vector2(Math.Clamp(_position.X, 0, windowWidth - _hitbox.Value.Width), Math.Clamp(_position.Y, 0, windowHeight - _hitbox.Value.Height));
         }
@@ -49,12 +47,12 @@ namespace J3P2_Monogame_Project.monoPong.Thom
             
             _position = _position + _velocity * (float)pGameTime.ElapsedGameTime.TotalSeconds * _speed;
             //Invert velocity
-            if (_position.X < 0 || _position.X > _device.Viewport.Width - _hitbox.Value.Width) 
+            if (_position.X < 0 || _position.X > _graphicsDevice.Viewport.Width - _hitbox.Value.Width) 
             {
                 _velocity.X *= -1;
             }
 
-            if (_position.Y < 0 || _position.Y > _device.Viewport.Height - _hitbox.Value.Height)
+            if (_position.Y < 0 || _position.Y > _graphicsDevice.Viewport.Height - _hitbox.Value.Height)
             {
                 _velocity.Y *= -1;
             }
@@ -72,14 +70,13 @@ namespace J3P2_Monogame_Project.monoPong.Thom
         }
         private void SpawnBallInMiddle()
         {
-            _position = new Vector2(_device.Viewport.Width / 2, _device.Viewport.Height / 2);
+            _position = new Vector2(_graphicsDevice.Viewport.Width / 2, _graphicsDevice.Viewport.Height / 2);
         }
         private Vector2 GetRandomDirection()
         {
             /*
              * 
              * GET V2 X,Y RANDOM NUMBERS BETWEEN 60,-60 AND 150,210
-             * 
              * 
              * */
             Random random = new Random();
