@@ -9,7 +9,7 @@ namespace J3P2_Monogame_Project.monoPong.Thom
     internal class Ball : GameObject
     {
         private GraphicsDevice _device;
-        private float _speed = 150.0f;
+        private float _speed = 1500.0f;
         private Vector2 _velocity = Vector2.Zero;
         private Random rng = new Random();
         public Ball(Vector2 pPosition, float pScale, GraphicsDevice pGraphicsDevice, Rectangle pRectangle ) : base(pPosition, pScale, pGraphicsDevice, pRectangle)
@@ -44,10 +44,9 @@ namespace J3P2_Monogame_Project.monoPong.Thom
         /// <param name="pGameTime"></param>
         private void BallMovement(GameTime pGameTime)
         {
+            //Update position every frame
             _position = _position + _velocity * (float)pGameTime.ElapsedGameTime.TotalSeconds * _speed;
-
-
-            //Invert new velocity
+            //Invert velocity
             if (_position.X < 0 || _position.X > _device.Viewport.Width - _hitbox.Value.Width) 
             {
                 _velocity.X *= -1;
