@@ -10,7 +10,7 @@ namespace J3P2_Monogame_Project.monoPong
         GameTime _gameTime;
         Vector2 _direction;
         int _paddleNumber;
-        public Paddle(Vector2 pPosition, Vector2 pScale, Texture2D pTexture, int pPaddleNumber) : base(pPosition, pScale, pTexture)
+        public Paddle(Vector2 pPosition, float pScale, Texture2D pTexture, int pPaddleNumber) : base(pPosition, pScale, pTexture)
         {
             _paddleNumber = pPaddleNumber;
         }

@@ -15,7 +15,7 @@ namespace J3P2_Monogame_Project.monoPong.Simon
         Paddle testPaddle2;
         Paddle testPaddle3;
         Paddle testPaddle4;
-        private Vector2 _scale;
+        private float _scale;
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);

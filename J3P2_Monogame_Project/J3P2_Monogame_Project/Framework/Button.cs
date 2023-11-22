@@ -15,7 +15,7 @@ namespace J3P2_Monogame_Project.Framework
             Pressed
         }
         protected State _currentState;
-        public Button(Vector2 pPosition, Vector2 pScale, GraphicsDevice pGraphicsDevice, Rectangle pRectangle) : base(pPosition, pScale, pGraphicsDevice, pRectangle)
+        public Button(Vector2 pPosition, GraphicsDevice pGraphicsDevice, Rectangle pRectangle) : base(pPosition, pGraphicsDevice, pRectangle)
         {
             // _textFont = game1.Content.Load<SpriteFont>("BrandonGrotesqueBold");
         }
