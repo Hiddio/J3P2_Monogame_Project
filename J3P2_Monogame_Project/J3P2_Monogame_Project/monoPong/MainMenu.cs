@@ -13,15 +13,15 @@ namespace J3P2_Monogame_Project.monoPong
 {
     class MainMenu : Scene
     {
-        public MainMenu(SpriteBatch spriteBatch, GraphicsDeviceManager graphics) : base(spriteBatch, graphics)
+        public MainMenu(SpriteBatch pSpriteBatch, GraphicsDeviceManager pGraphics, float pScale) : base(pSpriteBatch, pGraphics, pScale)
         {
 
         }
 
         public override void LoadContent(SceneManager sceneManager)
         {
-            //PlayButton _playButton = new PlayButton(new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2, (_graphics.GraphicsDevice.Viewport.Height / 2) - 50), scale, _graphics, rectangle, sceneManager);
-            //QuitButton _quitButton = new QuitButton(new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2, (_graphics.GraphicsDevice.Viewport.Height / 2) + 50), scale, _graphics, rectangle, sceneManager);
+            PlayButton _playButton = new PlayButton(new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2, (_graphics.GraphicsDevice.Viewport.Height / 2) - 50), scale, _graphics, rectangle, sceneManager);
+            QuitButton _quitButton = new QuitButton(new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2, (_graphics.GraphicsDevice.Viewport.Height / 2) + 50), scale, _graphics, rectangle, sceneManager);
 
             base.LoadContent(sceneManager);
         }

@@ -8,10 +8,13 @@ namespace J3P2_Monogame_Project.monoPong.Willemijn
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        private float _scale;
+        private GraphicsDevice _graphicsDevice;
 
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
+            //_graphicsDevice = new GraphicsDevice();
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
         }
@@ -19,6 +22,9 @@ namespace J3P2_Monogame_Project.monoPong.Willemijn
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            //GraphicsDevice.Viewport
+            _graphics.IsFullScreen = true;
+            _graphics.ApplyChanges();
 
             base.Initialize();
         }

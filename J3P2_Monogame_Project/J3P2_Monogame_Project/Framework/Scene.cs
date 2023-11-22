@@ -6,7 +6,7 @@ namespace J3P2_Monogame_Project.Framework
     {
         protected SpriteBatch _spriteBatch;
         protected GraphicsDeviceManager _graphics;
-        public Scene(SpriteBatch pSpriteBatch, GraphicsDeviceManager pGraphics)
+        public Scene(SpriteBatch pSpriteBatch, GraphicsDeviceManager pGraphics, float pScale)
         {
             
         }
