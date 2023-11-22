@@ -2,7 +2,6 @@
 using Microsoft.Xna.Framework.Graphics;
 using J3P2_Monogame_Project.Framework;
 using System;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace J3P2_Monogame_Project.monoPong.Thom
 {
