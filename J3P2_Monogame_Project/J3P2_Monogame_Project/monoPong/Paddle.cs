@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using J3P2_Monogame_Project.monoPong.Thom;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -9,14 +10,17 @@ namespace J3P2_Monogame_Project.monoPong
     {
         Vector2 _direction;
         int _paddleNumber;
-        public Paddle(Vector2 pPosition, float pScale, Texture2D pTexture, int pPaddleNumber) : base(pPosition, pScale, pTexture)
+        Ball _ball;
+        public Paddle(Vector2 pPosition, float pScale, Texture2D pTexture, int pPaddleNumber, Ball pBall) : base(pPosition, pScale, pTexture)
         {
             _paddleNumber = pPaddleNumber;
+            _ball = pBall;
         }
 
         public override void Update(GameTime pGameTime)
         {
             MovementInput(_paddleNumber, pGameTime);
+            PaddleCollision(_paddleNumber);
         }
 
         void Movement(Vector2 pDirection, float pSpeed, GameTime pGameTime)
@@ -82,6 +86,21 @@ namespace J3P2_Monogame_Project.monoPong
             }
 
             Movement(_direction, 500, pGameTime);
+        }
+        private void PaddleCollision(int pPaddleNumber)
+        {
+            if (_ball.HitBox.Intersects(HitBox))
+            {
+                switch (pPaddleNumber)
+                {
+                    case < 2:
+                        _ball._velocity.X *= -1;
+                        break;
+                    case >= 2:
+                        _ball._velocity.Y *= -1;
+                        break;
+                }
+            }
         }
     }
 }

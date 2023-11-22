@@ -8,17 +8,34 @@ namespace J3P2_Monogame_Project.monoPong.Thom
     internal class Ball : GameObject
     {
         private float _speed;
-        private Vector2 _velocity = Vector2.Zero;
+        public Vector2 _velocity = Vector2.Zero;
+
         public Ball(Vector2 pPosition, float pScale, GraphicsDevice pGraphicsDevice, Rectangle pRectangle, float pSpeed) : base(pPosition, pScale, pGraphicsDevice, pRectangle)
         {
             _speed = pSpeed;
         }
-        // ball update
+        public override Rectangle HitBox
+        {
+            // only has getter, it cannot be set to a value from anywhere
+            get
+            {
+                // if the backing field (our _hitbox rectangle) is null, then we set it to a new Rectangle with the correct scale.
+                _hitbox ??= new(0, 0, (int)(debugTexture.Width * _scale), (int)(debugTexture.Height * _scale));
+                // be cause the backingfield is nullable, we get the value cuz struct will be of type Nullable<Rectangle>
+                Rectangle rect = _hitbox.Value;
+                // set the position of the hitbox according to the objects position
+                rect.X = (int)_position.X - (debugTexture.Width / 2);
+                rect.Y = (int)_position.Y - (debugTexture.Height / 2);
+                // return the final hitbox
+                return rect;
+            }
+        }
         public override void Update(GameTime pGameTime)
         {
             ClampBall();
-            UpdateHitbox();
+            //UpdateHitbox();
             BallMovement(pGameTime);
+            BallCollision();
         }
         public override void Start() 
         {
@@ -35,7 +52,7 @@ namespace J3P2_Monogame_Project.monoPong.Thom
             float windowWidth = _graphicsDevice.Viewport.Width;
             float windowHeight = _graphicsDevice.Viewport.Height;
 
-            _position = new Vector2(Math.Clamp(_position.X, 0, windowWidth - _hitbox.Value.Width), Math.Clamp(_position.Y, 0, windowHeight - _hitbox.Value.Height));
+            _position = new Vector2(Math.Clamp(_position.X, 0, windowWidth - HitBox.Width), Math.Clamp(_position.Y, 0, windowHeight - HitBox.Height));
         }
         /// <summary>
         /// Handles all the logic for the ball's movement.
@@ -46,27 +63,21 @@ namespace J3P2_Monogame_Project.monoPong.Thom
             //Update position every frame
             
             _position = _position + _velocity * (float)pGameTime.ElapsedGameTime.TotalSeconds * _speed;
-            //Invert velocity
-            if (_position.X < 0 || _position.X > _graphicsDevice.Viewport.Width - _hitbox.Value.Width) 
-            {
-                _velocity.X *= -1;
-            }
-
-            if (_position.Y < 0 || _position.Y > _graphicsDevice.Viewport.Height - _hitbox.Value.Height)
-            {
-                _velocity.Y *= -1;
-            }
         }
         /// <summary>
         /// Update the ball's hitbox.
         /// </summary>
-        private void UpdateHitbox()
+        public void BallCollision()
         {
-            _hitbox = new Rectangle((int)_scale, (int)_scale, (int)_scale, (int)_scale);
-        }
-        private void BounceBall()
-        {
-
+            //Invert velocity
+            if (_position.X < 0 || _position.X > _graphicsDevice.Viewport.Width - HitBox.Width)
+            {
+                _velocity.X *= -1;
+            }
+            if (_position.Y < 0 || _position.Y > _graphicsDevice.Viewport.Height - HitBox.Height)
+            {
+                _velocity.Y *= -1;
+            }
         }
         private void SpawnBallInMiddle()
         {
@@ -87,6 +98,12 @@ namespace J3P2_Monogame_Project.monoPong.Thom
         // bounce ball against walls
 
         // ball draw
+
+        public override void Draw(SpriteBatch pSpriteBatch)
+        {
+            //base.Draw(pSpriteBatch);
+            DrawRectangle(pSpriteBatch);
+        }
         public override void DrawRectangle(SpriteBatch pSpriteBatch)
         {
             base.DrawRectangle(pSpriteBatch);

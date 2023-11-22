@@ -6,12 +6,14 @@ namespace J3P2_Monogame_Project.Framework
 {
     internal class GameObject
     {
-        protected Vector2 _position;
+        public Vector2 _position;
         protected Texture2D _texture;
         protected float _scale;
         protected GraphicsDevice _graphicsDevice;
         protected Rectangle? _hitbox;
-        public Rectangle HitBox
+
+        protected Texture2D debugTexture;
+        public virtual Rectangle HitBox
         {
             // only has getter, it cannot be set to a value from anywhere
             get
@@ -51,6 +53,12 @@ namespace J3P2_Monogame_Project.Framework
             _scale = pScale;
             _graphicsDevice = pGraphicsDevice;
             _hitbox = pRectangle;
+
+            // make a new Texture 1x1
+            debugTexture = new Texture2D(_graphicsDevice, 1, 1);
+            // Set the colour of the texture to red
+            debugTexture.SetData(new Color[] { Color.Red });
+
         }
         public virtual void Update(GameTime pGameTime)
         {   
@@ -68,12 +76,9 @@ namespace J3P2_Monogame_Project.Framework
         /// <param name="pSpriteBatch"></param>
         public virtual void DrawRectangle(SpriteBatch pSpriteBatch)
         {
-            // make a new Texture 1x1
-            _texture = new Texture2D(_graphicsDevice, 1, 1);
-            // Set the colour of the texture to red
-            _texture.SetData(new Color[] {Color.Red});
+
             // draw the rectangle
-            pSpriteBatch.Draw(_texture, new Rectangle((int)_position.X, (int)_position.Y, 1 * (int)_scale, 1 * (int)_scale), Color.White);
+            pSpriteBatch.Draw(debugTexture, new Rectangle((int)_position.X, (int)_position.Y, 1 * (int)_scale, 1 * (int)_scale), Color.White);
         }
     }
 }
