@@ -33,10 +33,10 @@ namespace J3P2_Monogame_Project.monoPong.Simon
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            testPaddle = new Paddle(new Vector2(50, 50), _scale, Content.Load<Texture2D>("Paddle"), 0);
-            testPaddle2 = new Paddle(new Vector2(750, 50), _scale, Content.Load<Texture2D>("Paddle"), 1);
-            testPaddle3 = new Paddle(new Vector2(450, 50), _scale, Content.Load<Texture2D>("PaddleHorizontal"), 2);
-            testPaddle4 = new Paddle(new Vector2(450, 450), _scale, Content.Load<Texture2D>("PaddleHorizontal"), 3);
+            //testPaddle = new Paddle(new Vector2(50, 50), 0.5f, Content.Load<Texture2D>("Paddle"), 0);
+            //testPaddle2 = new Paddle(new Vector2(750, 50), 0.5f, Content.Load<Texture2D>("Paddle"), 1);
+            //testPaddle3 = new Paddle(new Vector2(450, 50), 0.5f, Content.Load<Texture2D>("PaddleHorizontal"), 2);
+            //testPaddle4 = new Paddle(new Vector2(450, 450), 0.5f, Content.Load<Texture2D>("PaddleHorizontal"), 3);
             // TODO: use this.Content to load your game content here
         }
 

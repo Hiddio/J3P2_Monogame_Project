@@ -2,30 +2,46 @@
 using Microsoft.Xna.Framework.Graphics;
 using J3P2_Monogame_Project.Framework;
 using System;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace J3P2_Monogame_Project.monoPong.Thom
 {
     internal class Ball : GameObject
     {
-        private GraphicsDevice _device;
-        private float _speed = 1500.0f;
-        private Vector2 _velocity = Vector2.Zero;
-        private Random rng = new Random();
-        public Ball(Vector2 pPosition, float pScale, GraphicsDevice pGraphicsDevice, Rectangle pRectangle ) : base(pPosition, pScale, pGraphicsDevice, pRectangle)
+        private float _speed;
+        public Vector2 _velocity = Vector2.Zero;
+
+        public Ball(Vector2 pPosition, float pScale, GraphicsDevice pGraphicsDevice, Rectangle pRectangle, float pSpeed) : base(pPosition, pScale, pGraphicsDevice, pRectangle)
         {
-            _device = pGraphicsDevice;
+            _speed = pSpeed;
         }
-        // ball update
+        public override Rectangle HitBox
+        {
+            // only has getter, it cannot be set to a value from anywhere
+            get
+            {
+                // if the backing field (our _hitbox rectangle) is null, then we set it to a new Rectangle with the correct scale.
+                _hitbox ??= new(0, 0, (int)(debugTexture.Width * _scale), (int)(debugTexture.Height * _scale));
+                // be cause the backingfield is nullable, we get the value cuz struct will be of type Nullable<Rectangle>
+                Rectangle rect = _hitbox.Value;
+                // set the position of the hitbox according to the objects position
+                rect.X = (int)_position.X - (debugTexture.Width / 2);
+                rect.Y = (int)_position.Y - (debugTexture.Height / 2);
+                // return the final hitbox
+                return rect;
+            }
+        }
         public override void Update(GameTime pGameTime)
         {
             ClampBall();
-            UpdateHitbox();
+            //UpdateHitbox();
             BallMovement(pGameTime);
+            BallCollision();
         }
         public override void Start() 
         {
+            SpawnBallInMiddle();
             _velocity = GetRandomDirection();
+            _velocity.Normalize();
             Console.WriteLine(_velocity);
         }
         /// <summary>
@@ -33,10 +49,10 @@ namespace J3P2_Monogame_Project.monoPong.Thom
         /// </summary>
         private void ClampBall()
         {
-            float windowWidth = _device.Viewport.Width;
-            float windowHeight = _device.Viewport.Height;
+            float windowWidth = _graphicsDevice.Viewport.Width;
+            float windowHeight = _graphicsDevice.Viewport.Height;
 
-            _position = new Vector2(Math.Clamp(_position.X, 0, windowWidth - _hitbox.Value.Width), Math.Clamp(_position.Y, 0, windowHeight - _hitbox.Value.Height));
+            _position = new Vector2(Math.Clamp(_position.X, 0, windowWidth - HitBox.Width), Math.Clamp(_position.Y, 0, windowHeight - HitBox.Height));
         }
         /// <summary>
         /// Handles all the logic for the ball's movement.
@@ -45,45 +61,49 @@ namespace J3P2_Monogame_Project.monoPong.Thom
         private void BallMovement(GameTime pGameTime)
         {
             //Update position every frame
+            
             _position = _position + _velocity * (float)pGameTime.ElapsedGameTime.TotalSeconds * _speed;
-            //Invert velocity
-            if (_position.X < 0 || _position.X > _device.Viewport.Width - _hitbox.Value.Width) 
-            {
-                _velocity.X *= -1;
-            }
-
-            if (_position.Y < 0 || _position.Y > _device.Viewport.Height - _hitbox.Value.Height)
-            {
-                _velocity.Y *= -1;
-            }
         }
         /// <summary>
         /// Update the ball's hitbox.
         /// </summary>
-        private void UpdateHitbox()
+        public void BallCollision()
         {
-            _hitbox = new Rectangle((int)_scale, (int)_scale, (int)_scale, (int)_scale);
+            //Invert velocity
+            if (_position.X < 0 || _position.X > _graphicsDevice.Viewport.Width - HitBox.Width)
+            {
+                _velocity.X *= -1;
+            }
+            if (_position.Y < 0 || _position.Y > _graphicsDevice.Viewport.Height - HitBox.Height)
+            {
+                _velocity.Y *= -1;
+            }
         }
-        private void BounceBall()
+        private void SpawnBallInMiddle()
         {
-
+            _position = new Vector2(_graphicsDevice.Viewport.Width / 2, _graphicsDevice.Viewport.Height / 2);
         }
         private Vector2 GetRandomDirection()
         {
-            return new Vector2((float)rng.NextDouble(), (float)rng.NextDouble());
+            /*
+             * 
+             * GET V2 X,Y RANDOM NUMBERS BETWEEN 60,-60 AND 150,210
+             * 
+             * */
+            Random random = new Random();
+            // Returns a random floating-point number between -1 and 1
+            return new Vector2((float)(random.NextDouble() * 2 - 1), (float)(random.NextDouble() * 2 - 1));
         }
-
-
 
         // bounce ball against walls
 
-
-
-
-
-
-
         // ball draw
+
+        public override void Draw(SpriteBatch pSpriteBatch)
+        {
+            //base.Draw(pSpriteBatch);
+            DrawRectangle(pSpriteBatch);
+        }
         public override void DrawRectangle(SpriteBatch pSpriteBatch)
         {
             base.DrawRectangle(pSpriteBatch);

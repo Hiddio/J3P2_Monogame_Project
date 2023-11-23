@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using J3P2_Monogame_Project.Framework;
-using SharpDX.Direct2D1.Effects;
+using System.Drawing;
 
 namespace J3P2_Monogame_Project.monoPong
 {
