@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Diagnostics;
+
 namespace J3P2_Monogame_Project.Framework
 {
     class Button : GameObject
@@ -8,6 +10,7 @@ namespace J3P2_Monogame_Project.Framework
         protected SpriteFont _textFont;
         protected MouseState _mouseState;
         protected Point _mousePosition;
+
         protected enum State
         {
             Normal, 
@@ -15,9 +18,11 @@ namespace J3P2_Monogame_Project.Framework
             Pressed
         }
         protected State _currentState;
-        public Button(Vector2 pPosition, GraphicsDevice pGraphicsDevice, Rectangle pRectangle) : base(pPosition, pGraphicsDevice, pRectangle)
+        public Button(Vector2 pPosition, float pScale, Texture2D pTexture, Color pColor) : base(pPosition, pScale, pTexture, pColor)
         {
-            // _textFont = game1.Content.Load<SpriteFont>("BrandonGrotesqueBold");
+            
+            //_textFont = game1.Content.Load<SpriteFont>("BrandonGrotesqueBold");
+
         }
         public override void Update(GameTime pGameTime)
         {
@@ -38,15 +43,11 @@ namespace J3P2_Monogame_Project.Framework
                     break;            
             }
         }
-        public override void Draw(SpriteBatch pSpriteBatch)
-        {
-
-        }
         protected void NormalMode()
         {
             if (HitBox.Contains(_mousePosition))
             {
-                // color change light grey
+                _color = Color.LightGray;
                 _currentState = State.Hovered;
             }
         }
@@ -54,12 +55,12 @@ namespace J3P2_Monogame_Project.Framework
         {
             if (!HitBox.Contains(_mousePosition))
             {
-                // color change white
+                _color = Color.White;
                 _currentState = State.Normal;
             }
             if (_mouseState.LeftButton == ButtonState.Pressed)
             {
-                // color change dark grey
+                _color = Color.DarkGray;
                 _currentState = State.Pressed;
             }
         }
@@ -69,12 +70,12 @@ namespace J3P2_Monogame_Project.Framework
             {
                 if (HitBox.Contains(_mousePosition))
                 {
-                    // color change light grey
+                    _color = Color.LightGray;
                     _currentState = State.Hovered;
                 }
                 else
                 {
-                    // color change white
+                    _color = Color.White;
                     _currentState = State.Normal;
                 }
             }

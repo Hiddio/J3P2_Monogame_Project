@@ -13,11 +13,13 @@ namespace J3P2_Monogame_Project.Framework
         List<Scene> _scenes;
         Scene _currentScene;
         Game1 _game;
-        public SceneManager(GraphicsDeviceManager pGraphics, SpriteBatch pSpriteBatch, Game1 pGame)
+        public SceneManager(GraphicsDeviceManager pGraphics, SpriteBatch pSpriteBatch, Game1 pGame, List<Scene> pScenes )
         {
             _graphics = pGraphics;
             _spriteBatch = pSpriteBatch;
             _game = pGame;
+            _scenes = pScenes;
+            _currentScene = _scenes[0];
         }
 
         public void Update(GameTime gameTime)
@@ -49,5 +51,9 @@ namespace J3P2_Monogame_Project.Framework
             _game.Exit();
         }
 
+        public int GetCurrentSceneInt()
+        {
+            return _scenes.IndexOf(_currentScene);
+        }
     }
 }

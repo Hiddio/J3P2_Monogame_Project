@@ -10,7 +10,7 @@ namespace J3P2_Monogame_Project.monoPong.Thom
         private float _speed;
         public Vector2 _velocity = Vector2.Zero;
 
-        public Ball(Vector2 pPosition, float pScale, GraphicsDevice pGraphicsDevice, Rectangle pRectangle, float pSpeed) : base(pPosition, pScale, pGraphicsDevice, pRectangle)
+        public Ball(Vector2 pPosition, GraphicsDevice pGraphicsDevice, Rectangle pRectangle, float pSpeed) : base(pPosition, pGraphicsDevice, pRectangle)
         {
             _speed = pSpeed;
         }

@@ -1,31 +1,39 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.Collections.Generic;
+
 namespace J3P2_Monogame_Project.Framework
 {
-    class Scene
+    public class Scene
     {
         protected SpriteBatch _spriteBatch;
         protected GraphicsDeviceManager _graphics;
-        protected Vector2 _scale;
-        public Scene(SpriteBatch pSpriteBatch, GraphicsDeviceManager pGraphics, Vector2 pScale)
+        protected List<GameObject> _gameObjects = new List<GameObject>();
+        public Scene(SpriteBatch pSpriteBatch, GraphicsDeviceManager pGraphics)
         {
-            _scale= pScale;
             _spriteBatch = pSpriteBatch;
             _graphics = pGraphics;
         }
-        public virtual void Update()
-        {
-            
-        }
-
-        public virtual void Draw(GameTime gameTime)
-        {
-            
-        }
-
         public virtual void LoadContent(SceneManager sceneManager)
         {
-
+        
         }
+        public virtual void Update(GameTime gameTime)
+        {
+            for (int i = 0; i < _gameObjects.Count; i++)
+            {
+                _gameObjects[i].Update(gameTime);
+            }
+        }
+
+        public virtual void Draw()
+        {
+            for (int i = 0; i < _gameObjects.Count; i++)
+            {
+                _gameObjects[i].Draw(_spriteBatch);
+            }
+        }
+
     }
 }

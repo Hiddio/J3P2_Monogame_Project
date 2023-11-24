@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using SharpDX.DirectWrite;
 using System;
 using System.Collections.Generic;
 using J3P2_Monogame_Project.Framework;
@@ -12,8 +11,8 @@ namespace J3P2_Monogame_Project.monoPong.Willemijn
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        private Vector2 _scale;
         private List<Scene> _scenes = new List<Scene>();
+        private SceneManager _sceneManager;
 
         public Game1()
         {
@@ -25,11 +24,9 @@ namespace J3P2_Monogame_Project.monoPong.Willemijn
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            _scale.X = (float)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width / (float)_graphics.PreferredBackBufferWidth;
-            _scale.Y = (float)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height / (float)_graphics.PreferredBackBufferHeight;
-            _graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
-            _graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
-            _graphics.IsFullScreen = true;
+            //_graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+            //_graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+            //_graphics.IsFullScreen = true;
             _graphics.ApplyChanges();
             
             base.Initialize();
@@ -38,15 +35,15 @@ namespace J3P2_Monogame_Project.monoPong.Willemijn
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            MainMenu sceneMenu = new MainMenu(_spriteBatch, _graphics, _scale);
+            MainMenu sceneMenu = new MainMenu(_spriteBatch, this, _graphics);
 
             _scenes.Add(sceneMenu);
 
-            SceneManager sceneManager = new SceneManager(_graphics, _spriteBatch, this);
+            _sceneManager = new SceneManager(_graphics, _spriteBatch, this, _scenes);
 
             for (int i = 0; i < _scenes.Count; i++)
             {
-                _scenes[i].LoadContent(sceneManager);
+                _scenes[i].LoadContent(_sceneManager);
 
             }
             // TODO: use this.Content to load your game content here
@@ -57,16 +54,17 @@ namespace J3P2_Monogame_Project.monoPong.Willemijn
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
-
+            _scenes[_sceneManager.GetCurrentSceneInt()].Update(gameTime);
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
-            
 
+            _spriteBatch.Begin();
+            _scenes[_sceneManager.GetCurrentSceneInt()].Draw();
+            _spriteBatch.End();
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);
