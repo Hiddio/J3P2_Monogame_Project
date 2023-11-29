@@ -28,7 +28,7 @@ namespace J3P2_Monogame_Project.monoPong
 
             Texture2D textureButton = _game.Content.Load<Texture2D>("ButtonTexture");
             _textFont = _game.Content.Load<SpriteFont>("SpriteFont");
-            PlayButton _playButton = new PlayButton(new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2 + (textureButton.Width / 4), (_graphics.GraphicsDevice.Viewport.Height / 2) + (textureButton.Height / 4) + 150), .5f, textureButton, sceneManager);
+            PlayButton _playButton = new PlayButton(new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2 + (textureButton.Width / 4), (_graphics.GraphicsDevice.Viewport.Height / 2) + (textureButton.Height / 4) + 50), .5f, textureButton, sceneManager);
             text1 = "The goal of the game is to be the last one standing.";
             text2 = "That means that you need to defend your wall to";
             text3 = "have more health left than the other 3 players.";
@@ -40,7 +40,6 @@ namespace J3P2_Monogame_Project.monoPong
         }
         public override void Draw()
         {
-            Console.WriteLine("check Goal");
             for (int i = 0; i < texts.Count; i++)
             {
                 _spriteBatch.DrawString(_textFont, texts[i], new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2 - (_textFont.MeasureString(texts[i]).X / 2), _graphics.GraphicsDevice.Viewport.Height / 200 + (50 * i)), Color.White);

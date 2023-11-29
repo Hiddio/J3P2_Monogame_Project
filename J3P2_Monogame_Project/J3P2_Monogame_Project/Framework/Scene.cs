@@ -35,10 +35,6 @@ namespace J3P2_Monogame_Project.Framework
             }
         }
 
-        public virtual void ExitScene()
-        {
-
-        }
 
     }
 }

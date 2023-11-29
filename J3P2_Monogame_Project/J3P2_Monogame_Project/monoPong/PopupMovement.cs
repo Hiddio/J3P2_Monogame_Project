@@ -18,19 +18,19 @@ namespace J3P2_Monogame_Project.monoPong
         private string text2;
         private string text3;
         private List<string> texts = new List<string>();
-        public PopupMovement(SpriteBatch pSpriteBatch, Game1 game, GraphicsDeviceManager pGraphics) : base(pSpriteBatch, pGraphics)
+        public PopupMovement(SpriteBatch pSpriteBatch, Game1 pGame, GraphicsDeviceManager pGraphics) : base(pSpriteBatch, pGraphics)
         {
-            _game = game;
+            _game = pGame;
         }
 
-        public override void LoadContent(SceneManager sceneManager)
+        public override void LoadContent(SceneManager pSceneManager)
         {
 
             Texture2D textureButton = _game.Content.Load<Texture2D>("ButtonTexture");
             _textFont = _game.Content.Load<SpriteFont>("SpriteFont");
             
-            PlayButton _playButton = new PlayButton(new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2 + (textureButton.Width / 4), (_graphics.GraphicsDevice.Viewport.Height / 2) + (textureButton.Height / 4) + 150), .5f, textureButton, sceneManager);
-            MenuButton _menuButton = new MenuButton(new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2 + (textureButton.Width / 4), (_graphics.GraphicsDevice.Viewport.Height / 2) + (textureButton.Height / 4) + 50), .5f, textureButton, sceneManager);
+            PlayButton _playButton = new PlayButton(new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2 + (textureButton.Width / 4), (_graphics.GraphicsDevice.Viewport.Height / 2) + (textureButton.Height / 4) + 50), .5f, textureButton, pSceneManager);
+            MenuButton _menuButton = new MenuButton(new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2 + (textureButton.Width / 4), (_graphics.GraphicsDevice.Viewport.Height / 2) + (textureButton.Height / 4) + 250), .5f, textureButton, pSceneManager);
 
             text1 = "The left paddle can be moved with W and S.";
             text2 = "The right paddle can be moved with the top and bottom arrows.";
@@ -41,7 +41,7 @@ namespace J3P2_Monogame_Project.monoPong
 
             _gameObjects.Add(_menuButton);
             _gameObjects.Add(_playButton);
-            base.LoadContent(sceneManager);
+            base.LoadContent(pSceneManager);
         }
         public override void Draw()
         {

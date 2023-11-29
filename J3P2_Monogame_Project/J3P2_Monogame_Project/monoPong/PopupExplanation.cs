@@ -30,7 +30,7 @@ namespace J3P2_Monogame_Project.monoPong
             
             Texture2D textureButton = _game.Content.Load<Texture2D>("ButtonTexture");
             _textFont = _game.Content.Load<SpriteFont>("SpriteFont");
-            PlayButton _playButton = new PlayButton(new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2 + (textureButton.Width / 4), (_graphics.GraphicsDevice.Viewport.Height / 2) + (textureButton.Height / 4) + 150), .5f, textureButton, sceneManager);
+            PlayButton _playButton = new PlayButton(new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2 + (textureButton.Width / 4), (_graphics.GraphicsDevice.Viewport.Height / 2) + (textureButton.Height / 4) + 50), .5f, textureButton, sceneManager);
             text1 = "MonoPong is a two-dimensional table tennis game in which";
             text2 = "you move your paddle to defend your wall from the ball.";
             text3 = "If the ball hits the paddle it bounces back,";
@@ -53,10 +53,6 @@ namespace J3P2_Monogame_Project.monoPong
                 _spriteBatch.DrawString(_textFont, texts[i], new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2 - (_textFont.MeasureString(texts[i]).X / 2), _graphics.GraphicsDevice.Viewport.Height / 200 + (50 * i)), Color.White);
             }
             base.Draw();
-        }
-        public override void ExitScene()
-        {
-            _game._scenes.Remove(this);
         }
     }
 }
