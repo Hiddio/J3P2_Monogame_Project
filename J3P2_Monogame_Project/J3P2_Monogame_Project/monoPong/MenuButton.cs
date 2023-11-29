@@ -11,17 +11,18 @@ using Microsoft.Xna.Framework.Input;
 
 namespace J3P2_Monogame_Project.monoPong
 {
-    class QuitButton : Button
+    class MenuButton : Button
     {
         private SceneManager _sceneManager;
-        public QuitButton(Vector2 pPosition, float pScale, Texture2D pTexture, SceneManager pSceneManager) : base(pPosition, pScale, pTexture, Color.White)
+        public MenuButton(Vector2 pPosition, float pScale, Texture2D pTexture, SceneManager pSceneManager) : base(pPosition, pScale, pTexture, Color.White)
         {
             _sceneManager = pSceneManager;
         }
 
         protected override void PressedMode()
         {
-            _sceneManager.CloseGame();
+            _sceneManager.ChangeScene(0);
+            base.PressedMode();
         }
     }
 }

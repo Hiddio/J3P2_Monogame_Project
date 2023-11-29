@@ -13,7 +13,7 @@ namespace J3P2_Monogame_Project.monoPong
 {
     class PlayButton : Button
     {
-        SceneManager _sceneManager;
+        private SceneManager _sceneManager;
         public PlayButton(Vector2 pPosition, float pScale, Texture2D pTexture, SceneManager pSceneManager) : base(pPosition, pScale, pTexture, Color.White)
         {
             _sceneManager = pSceneManager;
@@ -21,7 +21,8 @@ namespace J3P2_Monogame_Project.monoPong
 
         protected override void PressedMode()
         {
-            _sceneManager.ChangeScene(1);
+            _sceneManager.ChangeScene(_sceneManager.GetCurrentSceneInt() + 1);
+            base.PressedMode();
         }
     }
 }

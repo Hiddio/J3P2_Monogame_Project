@@ -82,5 +82,9 @@ namespace J3P2_Monogame_Project.Framework
             // draw the rectangle
             pSpriteBatch.Draw(debugTexture, new Rectangle((int)_position.X, (int)_position.Y, 1 * (int)_scale, 1 * (int)_scale), Color.White);
         }
+        public virtual void DrawString(SpriteBatch pSpriteBatch)
+        {
+
+        }
     }
 }

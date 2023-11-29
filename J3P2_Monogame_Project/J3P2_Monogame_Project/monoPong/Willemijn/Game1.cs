@@ -11,7 +11,7 @@ namespace J3P2_Monogame_Project.monoPong.Willemijn
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        private List<Scene> _scenes = new List<Scene>();
+        public List<Scene> _scenes = new List<Scene>();
         private SceneManager _sceneManager;
 
         public Game1()
@@ -36,8 +36,14 @@ namespace J3P2_Monogame_Project.monoPong.Willemijn
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             MainMenu sceneMenu = new MainMenu(_spriteBatch, this, _graphics);
+            PopupExplanation sceneExplanation = new PopupExplanation(_spriteBatch, this, _graphics);
+            PopupGoal sceneGoal = new PopupGoal(_spriteBatch, this, _graphics);
+            PopupMovement scenePopupMovement = new PopupMovement(_spriteBatch, this, _graphics);
 
             _scenes.Add(sceneMenu);
+            _scenes.Add(sceneExplanation);
+            _scenes.Add(sceneGoal);
+            _scenes.Add(scenePopupMovement);
 
             _sceneManager = new SceneManager(_graphics, _spriteBatch, this, _scenes);
 

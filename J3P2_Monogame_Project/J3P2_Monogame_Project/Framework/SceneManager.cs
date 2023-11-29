@@ -36,13 +36,24 @@ namespace J3P2_Monogame_Project.Framework
             switch(sceneNumber)
             {
                 case 0:
+                    _currentScene.ExitScene();
                     _currentScene = _scenes[0];
                     break;
                 case 1:
+                    _currentScene.ExitScene();
                     _currentScene = _scenes[1];
                     break;
                 case 2:
+                    _currentScene.ExitScene();
                     _currentScene = _scenes[2];
+                    break;
+                case 3:
+                    _currentScene.ExitScene();
+                    _currentScene = _scenes[3];
+                    break;
+                case 4:
+                    _currentScene.ExitScene();
+                    _currentScene = _scenes[4];
                     break;
             }
         }
