@@ -21,19 +21,22 @@ namespace J3P2_Monogame_Project.monoPong
 
         public override void Update(GameTime pGameTime)
         {
-            Console.WriteLine(lastMouseClick);
+           // Console.WriteLine(lastMouseClick);
             base.Update(pGameTime);
         }
 
         protected override void PressedMode()
         {
-            //Console.WriteLine(lastMouseClick);
-            if (_mouseState.LeftButton == ButtonState.Pressed & lastMouseClick == ButtonState.Released)
-            {
-
-                _sceneManager.ChangeScene(_sceneManager.GetCurrentSceneInt() + 1);
-            }
             base.PressedMode();
+            if (_currentState == State.Pressed & lastMouseClick == ButtonState.Released)
+            {
+                Console.WriteLine("yo");
+                Console.WriteLine(_sceneManager.GetCurrentSceneInt());
+                if (_sceneManager.GetCurrentSceneInt() < 3)
+                {
+                    _sceneManager.ChangeScene(_sceneManager.GetCurrentSceneInt() + 1);
+                }
+            }
         }
     }
 }
