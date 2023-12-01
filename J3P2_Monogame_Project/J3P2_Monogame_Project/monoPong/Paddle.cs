@@ -62,7 +62,7 @@ namespace J3P2_Monogame_Project.monoPong
                     }
                     break;
                 case 2:
-                    Console.WriteLine("test1");
+                  //  Console.WriteLine("test1");
                     if (GamePad.GetState(PlayerIndex.One).DPad.Left == ButtonState.Pressed)
                     {
                         Console.WriteLine("test2");

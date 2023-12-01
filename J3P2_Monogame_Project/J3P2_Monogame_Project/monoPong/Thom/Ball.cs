@@ -41,8 +41,6 @@ namespace J3P2_Monogame_Project.monoPong.Thom
         {
             SpawnBallInMiddle();
             _velocity = GetRandomDirection();
-            _velocity.Normalize();
-            Console.WriteLine(_velocity);
         }
         /// <summary>
         /// Clamps the ball so it can't leave the game-window.
@@ -61,7 +59,8 @@ namespace J3P2_Monogame_Project.monoPong.Thom
         private void BallMovement(GameTime pGameTime)
         {
             //Update position every frame
-            
+
+            _velocity = Vector2.Normalize(_velocity);
             _position = _position + _velocity * (float)pGameTime.ElapsedGameTime.TotalSeconds * _speed;
         }
         /// <summary>
@@ -72,16 +71,20 @@ namespace J3P2_Monogame_Project.monoPong.Thom
             //Invert velocity
             if (_position.X < 0 || _position.X > _graphicsDevice.Viewport.Width - HitBox.Width)
             {
-                _velocity.X *= -1;
+                //_velocity.X *= -1;
+                SpawnBallInMiddle();
             }
             if (_position.Y < 0 || _position.Y > _graphicsDevice.Viewport.Height - HitBox.Height)
             {
+                //SpawnBallInMiddle();
                 _velocity.Y *= -1;
             }
         }
         private void SpawnBallInMiddle()
         {
             _position = new Vector2(_graphicsDevice.Viewport.Width / 2, _graphicsDevice.Viewport.Height / 2);
+            _velocity = GetRandomDirection();
+            Console.WriteLine(_velocity);
         }
         private Vector2 GetRandomDirection()
         {
