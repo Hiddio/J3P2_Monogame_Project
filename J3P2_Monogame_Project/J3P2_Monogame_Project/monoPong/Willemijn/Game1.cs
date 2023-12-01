@@ -61,6 +61,7 @@ namespace J3P2_Monogame_Project.monoPong.Willemijn
                 Exit();
 
             _scenes[_sceneManager.GetCurrentSceneInt()].Update(gameTime);
+            Console.WriteLine(_sceneManager.GetCurrentSceneInt());
             base.Update(gameTime);
         }
 

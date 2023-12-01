@@ -10,7 +10,7 @@ namespace J3P2_Monogame_Project.Framework
         protected SpriteFont _textFont;
         protected MouseState _mouseState;
         protected Point _mousePosition;
-        private ButtonState lastMouseClick = Mouse.GetState().LeftButton;
+        protected ButtonState lastMouseClick = Mouse.GetState().LeftButton;
 
         protected enum State
         {
@@ -68,7 +68,7 @@ namespace J3P2_Monogame_Project.Framework
         }
         protected virtual void PressedMode()
         {
-            if (_mouseState.LeftButton == ButtonState.Pressed)
+            if (_mouseState.LeftButton == ButtonState.Pressed & lastMouseClick == ButtonState.Released)
             {
                 if (HitBox.Contains(_mousePosition))
                 {

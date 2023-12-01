@@ -19,9 +19,20 @@ namespace J3P2_Monogame_Project.monoPong
             _sceneManager = pSceneManager;
         }
 
+        public override void Update(GameTime pGameTime)
+        {
+            Console.WriteLine(lastMouseClick);
+            base.Update(pGameTime);
+        }
+
         protected override void PressedMode()
         {
-            _sceneManager.ChangeScene(_sceneManager.GetCurrentSceneInt() + 1);
+            //Console.WriteLine(lastMouseClick);
+            if (_mouseState.LeftButton == ButtonState.Pressed & lastMouseClick == ButtonState.Released)
+            {
+
+                _sceneManager.ChangeScene(_sceneManager.GetCurrentSceneInt() + 1);
+            }
             base.PressedMode();
         }
     }
