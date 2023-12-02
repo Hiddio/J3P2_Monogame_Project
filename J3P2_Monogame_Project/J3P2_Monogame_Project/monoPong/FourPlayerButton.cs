@@ -11,10 +11,10 @@ using Microsoft.Xna.Framework.Input;
 
 namespace J3P2_Monogame_Project.monoPong
 {
-    class PlayButton : Button
+    class FourPlayerButton : Button
     {
         private SceneManager _sceneManager;
-        public PlayButton(Vector2 pPosition, float pScale, Texture2D pTexture, SceneManager pSceneManager) : base(pPosition, pScale, pTexture, Color.White)
+        public FourPlayerButton(Vector2 pPosition, float pScale, Texture2D pTexture, SceneManager pSceneManager) : base(pPosition, pScale, pTexture, Color.White)
         {
             _sceneManager = pSceneManager;
         }
@@ -23,7 +23,7 @@ namespace J3P2_Monogame_Project.monoPong
         {
             if (_sceneManager.GetCurrentSceneInt() < _sceneManager._scenes.Count)
             {
-                _sceneManager.ChangeScene(_sceneManager.GetCurrentSceneInt() + 1);
+                _sceneManager.ChangeScene(_sceneManager.GetCurrentSceneInt() + 2);
             }
         }
     }

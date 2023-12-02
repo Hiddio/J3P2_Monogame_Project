@@ -60,20 +60,21 @@ namespace J3P2_Monogame_Project.Framework
                 _color = Color.White;
                 _currentState = State.Normal;
             }
-            if (_mouseState.LeftButton == ButtonState.Released & lastMouseClick == ButtonState.Pressed)
+            if (_mouseState.LeftButton == ButtonState.Pressed & lastMouseClick == ButtonState.Released)
             {
                     _color = Color.DarkGray;
                     _currentState = State.Pressed;
             }
         }
-        protected virtual void PressedMode()
+        protected void PressedMode()
         {
-            if (_mouseState.LeftButton == ButtonState.Pressed & lastMouseClick == ButtonState.Released)
+            if (_mouseState.LeftButton == ButtonState.Released & lastMouseClick == ButtonState.Pressed)
             {
                 if (HitBox.Contains(_mousePosition))
                 {
                     _color = Color.LightGray;
                     _currentState = State.Hovered;
+                    OnClick();
                 }
                 else
                 {
@@ -81,6 +82,11 @@ namespace J3P2_Monogame_Project.Framework
                     _currentState = State.Normal;
                 }
             }
+        }
+
+        protected virtual void OnClick()
+        {
+
         }
     }
 }

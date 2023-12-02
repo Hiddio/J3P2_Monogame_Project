@@ -19,7 +19,7 @@ namespace J3P2_Monogame_Project.monoPong
             _sceneManager = pSceneManager;
         }
 
-        protected override void PressedMode()
+        protected override void OnClick()
         {
             _sceneManager.CloseGame();
         }

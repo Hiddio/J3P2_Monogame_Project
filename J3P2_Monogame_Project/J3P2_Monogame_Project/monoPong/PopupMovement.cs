@@ -30,7 +30,7 @@ namespace J3P2_Monogame_Project.monoPong
             _textFont = _game.Content.Load<SpriteFont>("SpriteFont");
             
             PlayButton _playButton = new PlayButton(new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2 + (textureButton.Width / 4), (_graphics.GraphicsDevice.Viewport.Height / 2) + (textureButton.Height / 4) + 50), .5f, textureButton, pSceneManager);
-            MenuButton _menuButton = new MenuButton(new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2 + (textureButton.Width / 4), (_graphics.GraphicsDevice.Viewport.Height / 2) + (textureButton.Height / 4) + 250), .5f, textureButton, pSceneManager);
+            MenuButton _menuButton = new MenuButton(new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2 + (textureButton.Width / 4), (_graphics.GraphicsDevice.Viewport.Height / 2) + (textureButton.Height / 4) + 150), .5f, textureButton, pSceneManager);
 
             text1 = "The left paddle can be moved with W and S.";
             text2 = "The right paddle can be moved with the top and bottom arrows.";

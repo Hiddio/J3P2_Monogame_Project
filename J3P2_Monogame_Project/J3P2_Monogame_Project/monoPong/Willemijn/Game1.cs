@@ -39,11 +39,13 @@ namespace J3P2_Monogame_Project.monoPong.Willemijn
             PopupExplanation sceneExplanation = new PopupExplanation(_spriteBatch, this, _graphics);
             PopupGoal sceneGoal = new PopupGoal(_spriteBatch, this, _graphics);
             PopupMovement sceneMovement = new PopupMovement(_spriteBatch, this, _graphics);
+            PlayerAmount scenePlayerAmount = new PlayerAmount(_spriteBatch, this, _graphics);
 
             _scenes.Add(sceneMenu);
             _scenes.Add(sceneExplanation);
             _scenes.Add(sceneGoal);
             _scenes.Add(sceneMovement);
+            _scenes.Add(scenePlayerAmount);
 
             _sceneManager = new SceneManager(_graphics, _spriteBatch, this, _scenes);
 

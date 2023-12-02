@@ -11,7 +11,7 @@ namespace J3P2_Monogame_Project.Framework
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        private List<Scene> _scenes;
+        public List<Scene> _scenes;
         private Scene _currentScene;
         private Game1 _game;
         private bool _firstTime = true;
