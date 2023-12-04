@@ -12,7 +12,7 @@ namespace J3P2_Monogame_Project.monoPong.Thom
         public Vector2 _velocity = Vector2.Zero;
         private bool firstTime = true;
         private GraphicsDevice _device;
-        public Ball(Vector2 pPosition, float pScale, Texture2D pTexture, float pSpeed, GraphicsDevice pGraphicsDevice) : base(pPosition, pScale, pTexture)
+        public Ball(Vector2 pPosition, float pScale, Texture2D pTexture, float pSpeed, GraphicsDevice pGraphicsDevice, Color pColor) : base(pPosition, pScale, pTexture, pColor)
         {
             _speed = pSpeed;
             _device = pGraphicsDevice;
@@ -58,12 +58,12 @@ namespace J3P2_Monogame_Project.monoPong.Thom
         {
             Console.WriteLine(HitBox);
             //Invert velocity
-            if (_position.X < 0 || _position.X > _device.Viewport.Width - 10.0f)
+            if (_position.X < 0 || _position.X > _device.Viewport.Width - HitBox.Width)
             {
                 //_velocity.X *= -1;
                 SpawnBallInMiddle();
             }
-            if (_position.Y < 0 || _position.Y > _device.Viewport.Height - 10.0f)
+            if (_position.Y < 0 || _position.Y > _device.Viewport.Height - HitBox.Height)
             {
                 //SpawnBallInMiddle();
                 _velocity.Y *= -1;
