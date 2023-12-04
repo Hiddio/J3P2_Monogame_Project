@@ -11,6 +11,7 @@ namespace J3P2_Monogame_Project.Framework
         protected MouseState _mouseState;
         protected Point _mousePosition;
         protected ButtonState lastMouseClick = Mouse.GetState().LeftButton;
+        public int _playerAmount;
 
         protected enum State
         {

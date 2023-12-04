@@ -11,17 +11,17 @@ using Microsoft.Xna.Framework.Input;
 
 namespace J3P2_Monogame_Project.monoPong
 {
-    class FourPlayerButton : Button
+    class ThreePlayerButton : Button
     {
         private SceneManager _sceneManager;
-        public FourPlayerButton(Vector2 pPosition, float pScale, Texture2D pTexture, SceneManager pSceneManager) : base(pPosition, pScale, pTexture, Color.White)
+        public ThreePlayerButton(Vector2 pPosition, float pScale, Texture2D pTexture, SceneManager pSceneManager) : base(pPosition, pScale, pTexture, Color.White)
         {
             _sceneManager = pSceneManager;
         }
 
         protected override void OnClick()
         {
-            _playerAmount = 4;
+            _playerAmount = 3;
             if (_sceneManager.GetCurrentSceneInt() < _sceneManager._scenes.Count)
             {
                 _sceneManager.ChangeScene(_sceneManager.GetCurrentSceneInt() + 1);
