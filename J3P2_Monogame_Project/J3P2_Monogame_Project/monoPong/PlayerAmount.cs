@@ -21,11 +21,13 @@ namespace J3P2_Monogame_Project.monoPong
         }
         public override void LoadContent(SceneManager sceneManager)
         {
-            Texture2D textureButton = _game.Content.Load<Texture2D>("ButtonTexture");
+            Texture2D textureButtonTwo = _game.Content.Load<Texture2D>("ButtonTextureTwo");
+            Texture2D textureButtonThree = _game.Content.Load<Texture2D>("ButtonTextureThree");
+            Texture2D textureButtonFour = _game.Content.Load<Texture2D>("ButtonTextureFour");
             _textFont = _game.Content.Load<SpriteFont>("SpriteFont");
-            TwoPlayerButton _twoPlayerButton = new TwoPlayerButton(new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2 + (textureButton.Width / 4), (_graphics.GraphicsDevice.Viewport.Height / 2) + (textureButton.Height / 4) - 100), .5f, textureButton, sceneManager);
-            ThreePlayerButton _threePlayerButton = new ThreePlayerButton(new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2 + (textureButton.Width / 4), (_graphics.GraphicsDevice.Viewport.Height / 2) + (textureButton.Height / 4)), .5f, textureButton, sceneManager);
-            FourPlayerButton _fourPlayerButton = new FourPlayerButton(new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2 + (textureButton.Width / 4), (_graphics.GraphicsDevice.Viewport.Height / 2) + (textureButton.Height / 4) + 100), .5f, textureButton, sceneManager);
+            TwoPlayerButton _twoPlayerButton = new TwoPlayerButton(new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2 + (textureButtonTwo.Width / 4), (_graphics.GraphicsDevice.Viewport.Height / 2) + (textureButtonTwo.Height / 4) - 100), .5f, textureButtonTwo, sceneManager);
+            ThreePlayerButton _threePlayerButton = new ThreePlayerButton(new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2 + (textureButtonThree.Width / 4), (_graphics.GraphicsDevice.Viewport.Height / 2) + (textureButtonThree.Height / 4)), .5f, textureButtonThree, sceneManager);
+            FourPlayerButton _fourPlayerButton = new FourPlayerButton(new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2 + (textureButtonFour.Width / 4), (_graphics.GraphicsDevice.Viewport.Height / 2) + (textureButtonFour.Height / 4) + 100), .5f, textureButtonFour, sceneManager);
 
             _text1 = "Choose the amount of players:";
             
