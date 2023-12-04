@@ -20,10 +20,11 @@ namespace J3P2_Monogame_Project.monoPong
 
         public override void LoadContent(SceneManager sceneManager)
         {
-            
-            Texture2D textureButton = _game.Content.Load<Texture2D>("ButtonTexture");
-            PlayButton _playButton = new PlayButton(new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2 + (textureButton.Width / 4), (_graphics.GraphicsDevice.Viewport.Height / 2) + (textureButton.Height / 4) - 50), .5f, textureButton, sceneManager);
-            QuitButton _quitButton = new QuitButton(new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2 + (textureButton.Width / 4), (_graphics.GraphicsDevice.Viewport.Height / 2) + (textureButton.Height / 4) + 50), .5f, textureButton, sceneManager);
+
+            Texture2D textureButtonPlay = _game.Content.Load<Texture2D>("ButtonTexturePlay");
+            PlayButton _playButton = new PlayButton(new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2 + (textureButtonPlay.Width / 4), (_graphics.GraphicsDevice.Viewport.Height / 2) + (textureButtonPlay.Height / 4) - 50), .5f, textureButtonPlay, sceneManager);
+            Texture2D textureButtonQuit = _game.Content.Load<Texture2D>("ButtonTextureQuit");
+            QuitButton _quitButton = new QuitButton(new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2 + (textureButtonQuit.Width / 4), (_graphics.GraphicsDevice.Viewport.Height / 2) + (textureButtonQuit.Height / 4) + 50), .5f, textureButtonQuit, sceneManager);
 
             _gameObjects.Add(_playButton);
             _gameObjects.Add(_quitButton);

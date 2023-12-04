@@ -21,6 +21,7 @@ namespace J3P2_Monogame_Project.monoPong
 
         protected override void OnClick()
         {
+            _playerAmount = 2;
             if (_sceneManager.GetCurrentSceneInt() < _sceneManager._scenes.Count)
             {
                 _sceneManager.ChangeScene(_sceneManager.GetCurrentSceneInt() + 1);
