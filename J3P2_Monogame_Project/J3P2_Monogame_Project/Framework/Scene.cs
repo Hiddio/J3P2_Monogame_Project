@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 namespace J3P2_Monogame_Project.Framework
 {
-    class Scene
+    public class Scene
     {
         protected SpriteBatch _spriteBatch;
         protected GraphicsDeviceManager _graphics;
@@ -10,7 +10,7 @@ namespace J3P2_Monogame_Project.Framework
         {
             
         }
-        public virtual void Update()
+        public virtual void Update(GameTime pGameTime)
         {
             
         }

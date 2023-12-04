@@ -22,9 +22,7 @@ namespace J3P2_Monogame_Project.Framework
         protected State _currentState;
         public Button(Vector2 pPosition, float pScale, Texture2D pTexture, Color pColor) : base(pPosition, pScale, pTexture, pColor)
         {
-            
             //_textFont = game1.Content.Load<SpriteFont>("BrandonGrotesqueBold");
-
         }
         public override void Update(GameTime pGameTime)
         {
@@ -46,7 +44,7 @@ namespace J3P2_Monogame_Project.Framework
             }
             lastMouseClick = _mouseState.LeftButton;
         }
-        protected void NormalMode()
+        protected virtual void NormalMode()
         {
             if (HitBox.Contains(_mousePosition))
             {
@@ -54,7 +52,7 @@ namespace J3P2_Monogame_Project.Framework
                 _currentState = State.Hovered;
             }
         }
-        protected void HoverMode()
+        protected virtual void HoverMode()
         {
             if (!HitBox.Contains(_mousePosition))
             {
@@ -67,7 +65,7 @@ namespace J3P2_Monogame_Project.Framework
                     _currentState = State.Pressed;
             }
         }
-        protected void PressedMode()
+        protected virtual void PressedMode()
         {
             if (_mouseState.LeftButton == ButtonState.Released & lastMouseClick == ButtonState.Pressed)
             {

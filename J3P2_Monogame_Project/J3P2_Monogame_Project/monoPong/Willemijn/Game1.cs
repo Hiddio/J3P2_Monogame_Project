@@ -72,7 +72,7 @@ namespace J3P2_Monogame_Project.monoPong.Willemijn
             GraphicsDevice.Clear(Color.Black);
 
             _spriteBatch.Begin();
-            _scenes[_sceneManager.GetCurrentSceneInt()].Draw();
+            _scenes[_sceneManager.GetCurrentSceneInt()].Draw(gameTime);
             _spriteBatch.End();
             // TODO: Add your drawing code here
 
