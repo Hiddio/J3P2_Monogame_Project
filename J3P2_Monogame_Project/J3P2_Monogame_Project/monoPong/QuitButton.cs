@@ -13,15 +13,15 @@ namespace J3P2_Monogame_Project.monoPong
 {
     class QuitButton : Button
     {
-        SceneManager _sceneManager;
-        public QuitButton(Vector2 pPosition, float pScale, GraphicsDevice pGraphics, Rectangle pRectangle, SceneManager pSceneManager) : base(pPosition, pScale, pGraphics, pRectangle)
+        private SceneManager _sceneManager;
+        public QuitButton(Vector2 pPosition, float pScale, Texture2D pTexture, SceneManager pSceneManager) : base(pPosition, pScale, pTexture, Color.White)
         {
             _sceneManager = pSceneManager;
         }
 
-        protected override void PressedMode()
+        protected override void OnClick()
         {
-            //_game.Exit();
+            _sceneManager.CloseGame();
         }
     }
 }

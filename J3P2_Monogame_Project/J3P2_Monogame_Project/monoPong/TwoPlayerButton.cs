@@ -11,10 +11,10 @@ using Microsoft.Xna.Framework.Input;
 
 namespace J3P2_Monogame_Project.monoPong
 {
-    class PlayButton : Button
+    class TwoPlayerButton : Button
     {
         private SceneManager _sceneManager;
-        public PlayButton(Vector2 pPosition, float pScale, Texture2D pTexture, SceneManager pSceneManager) : base(pPosition, pScale, pTexture, Color.White)
+        public TwoPlayerButton(Vector2 pPosition, float pScale, Texture2D pTexture, SceneManager pSceneManager) : base(pPosition, pScale, pTexture, Color.White)
         {
             _sceneManager = pSceneManager;
         }
