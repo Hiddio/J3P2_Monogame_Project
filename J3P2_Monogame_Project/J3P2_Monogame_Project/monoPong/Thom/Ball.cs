@@ -7,8 +7,10 @@ namespace J3P2_Monogame_Project.monoPong.Thom
 {
     internal class Ball : GameObject
     {
-        private float _speed;
+        public float _speed;
+        private float _ballSpeed;
         public Vector2 _velocity = Vector2.Zero;
+        private bool firstTime = true;
 
         public Ball(Vector2 pPosition, float pScale, GraphicsDevice pGraphicsDevice, Rectangle pRectangle, float pSpeed) : base(pPosition, pScale, pGraphicsDevice, pRectangle)
         {
@@ -41,6 +43,7 @@ namespace J3P2_Monogame_Project.monoPong.Thom
         {
             SpawnBallInMiddle();
             _velocity = GetRandomDirection();
+            _ballSpeed = _speed;
         }
         /// <summary>
         /// Clamps the ball so it can't leave the game-window.
@@ -84,7 +87,18 @@ namespace J3P2_Monogame_Project.monoPong.Thom
         {
             _position = new Vector2(_graphicsDevice.Viewport.Width / 2, _graphicsDevice.Viewport.Height / 2);
             _velocity = GetRandomDirection();
+            if (!firstTime)
+            {
+                _speed = _ballSpeed;
+            }
+            firstTime = false;
             Console.WriteLine(_velocity);
+        }
+        public void AddBallSpeed()
+        {
+            float addedBallSpeed;
+            addedBallSpeed = ((_ballSpeed / 10) + 10 * 2.25f);
+            _speed += addedBallSpeed;
         }
         private Vector2 GetRandomDirection()
         {
