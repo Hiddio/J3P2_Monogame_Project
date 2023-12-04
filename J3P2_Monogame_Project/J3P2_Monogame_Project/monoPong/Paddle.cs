@@ -11,7 +11,7 @@ namespace J3P2_Monogame_Project.monoPong
         Vector2 _direction;
         int _paddleNumber;
         Ball _ball;
-        public Paddle(Vector2 pPosition, float pScale, Texture2D pTexture, int pPaddleNumber, Ball pBall) : base(pPosition, pScale, pTexture, Color.White)
+        public Paddle(Vector2 pPosition, float pScale, Texture2D pTexture, int pPaddleNumber, Ball pBall) : base(pPosition, pScale, pTexture)
         {
             _paddleNumber = pPaddleNumber;
             _ball = pBall;

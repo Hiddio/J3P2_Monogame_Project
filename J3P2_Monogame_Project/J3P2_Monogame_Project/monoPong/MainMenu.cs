@@ -6,27 +6,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using J3P2_Monogame_Project.Framework;
-using J3P2_Monogame_Project.monoPong.Willemijn;
+using System.Drawing;
 
 namespace J3P2_Monogame_Project.monoPong
 {
     class MainMenu : Scene
     {
-        Game1 _game;
-        public MainMenu(SpriteBatch pSpriteBatch, Game1 game, GraphicsDeviceManager pGraphics) : base(pSpriteBatch, pGraphics)
+        public MainMenu(SpriteBatch pSpriteBatch, GraphicsDeviceManager pGraphics, float pScale) : base(pSpriteBatch, pGraphics, pScale)
         {
-            _game = game;
+
         }
 
         public override void LoadContent(SceneManager sceneManager)
         {
-            
-            Texture2D textureButton = _game.Content.Load<Texture2D>("ButtonTexture");
-            PlayButton _playButton = new PlayButton(new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2 + (textureButton.Width / 4), (_graphics.GraphicsDevice.Viewport.Height / 2) + (textureButton.Height / 4) - 50), .5f, textureButton, sceneManager);
-            QuitButton _quitButton = new QuitButton(new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2 + (textureButton.Width / 4), (_graphics.GraphicsDevice.Viewport.Height / 2) + (textureButton.Height / 4) + 50), .5f, textureButton, sceneManager);
+            //PlayButton _playButton = new PlayButton(new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2, (_graphics.GraphicsDevice.Viewport.Height / 2) - 50), scale, _graphics, rectangle, sceneManager);
+            //QuitButton _quitButton = new QuitButton(new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2, (_graphics.GraphicsDevice.Viewport.Height / 2) + 50), scale, _graphics, rectangle, sceneManager);
 
-            _gameObjects.Add(_playButton);
-            _gameObjects.Add(_quitButton);
             base.LoadContent(sceneManager);
         }
     }

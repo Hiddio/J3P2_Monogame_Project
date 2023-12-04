@@ -1,8 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System.Diagnostics;
-
 namespace J3P2_Monogame_Project.Framework
 {
     class Button : GameObject
@@ -10,8 +8,6 @@ namespace J3P2_Monogame_Project.Framework
         protected SpriteFont _textFont;
         protected MouseState _mouseState;
         protected Point _mousePosition;
-        protected ButtonState lastMouseClick = Mouse.GetState().LeftButton;
-
         protected enum State
         {
             Normal, 
@@ -19,11 +15,9 @@ namespace J3P2_Monogame_Project.Framework
             Pressed
         }
         protected State _currentState;
-        public Button(Vector2 pPosition, float pScale, Texture2D pTexture, Color pColor) : base(pPosition, pScale, pTexture, pColor)
+        public Button(Vector2 pPosition, float pScale, GraphicsDevice pGraphicsDevice, Rectangle pRectangle) : base(pPosition, pScale, pGraphicsDevice, pRectangle)
         {
-            
-            //_textFont = game1.Content.Load<SpriteFont>("BrandonGrotesqueBold");
-
+            // _textFont = game1.Content.Load<SpriteFont>("BrandonGrotesqueBold");
         }
         public override void Update(GameTime pGameTime)
         {
@@ -43,13 +37,16 @@ namespace J3P2_Monogame_Project.Framework
                     PressedMode();
                     break;            
             }
-            lastMouseClick = _mouseState.LeftButton;
+        }
+        public override void Draw(SpriteBatch pSpriteBatch)
+        {
+
         }
         protected void NormalMode()
         {
             if (HitBox.Contains(_mousePosition))
             {
-                _color = Color.LightGray;
+                // color change light grey
                 _currentState = State.Hovered;
             }
         }
@@ -57,36 +54,30 @@ namespace J3P2_Monogame_Project.Framework
         {
             if (!HitBox.Contains(_mousePosition))
             {
-                _color = Color.White;
+                // color change white
                 _currentState = State.Normal;
             }
-            if (_mouseState.LeftButton == ButtonState.Pressed & lastMouseClick == ButtonState.Released)
+            if (_mouseState.LeftButton == ButtonState.Pressed)
             {
-                    _color = Color.DarkGray;
-                    _currentState = State.Pressed;
+                // color change dark grey
+                _currentState = State.Pressed;
             }
         }
-        protected void PressedMode()
+        protected virtual void PressedMode()
         {
-            if (_mouseState.LeftButton == ButtonState.Released & lastMouseClick == ButtonState.Pressed)
+            if (_mouseState.LeftButton == ButtonState.Released)
             {
                 if (HitBox.Contains(_mousePosition))
                 {
-                    _color = Color.LightGray;
+                    // color change light grey
                     _currentState = State.Hovered;
-                    OnClick();
                 }
                 else
                 {
-                    _color = Color.White;
+                    // color change white
                     _currentState = State.Normal;
                 }
             }
-        }
-
-        protected virtual void OnClick()
-        {
-
         }
     }
 }

@@ -7,28 +7,15 @@ namespace J3P2_Monogame_Project.monoPong.Thom
 {
     internal class Ball : GameObject
     {
-        private float _speed;
+        public float _speed;
+        private float _ballSpeed;
         public Vector2 _velocity = Vector2.Zero;
-
-        public Ball(Vector2 pPosition, GraphicsDevice pGraphicsDevice, Rectangle pRectangle, float pSpeed) : base(pPosition, pGraphicsDevice, pRectangle)
+        private bool firstTime = true;
+        private GraphicsDevice _device;
+        public Ball(Vector2 pPosition, float pScale, Texture2D pTexture, float pSpeed, GraphicsDevice pGraphicsDevice) : base(pPosition, pScale, pTexture)
         {
             _speed = pSpeed;
-        }
-        public override Rectangle HitBox
-        {
-            // only has getter, it cannot be set to a value from anywhere
-            get
-            {
-                // if the backing field (our _hitbox rectangle) is null, then we set it to a new Rectangle with the correct scale.
-                _hitbox ??= new(0, 0, (int)(debugTexture.Width * _scale), (int)(debugTexture.Height * _scale));
-                // be cause the backingfield is nullable, we get the value cuz struct will be of type Nullable<Rectangle>
-                Rectangle rect = _hitbox.Value;
-                // set the position of the hitbox according to the objects position
-                rect.X = (int)_position.X - (debugTexture.Width / 2);
-                rect.Y = (int)_position.Y - (debugTexture.Height / 2);
-                // return the final hitbox
-                return rect;
-            }
+            _device = pGraphicsDevice;
         }
         public override void Update(GameTime pGameTime)
         {
@@ -41,16 +28,15 @@ namespace J3P2_Monogame_Project.monoPong.Thom
         {
             SpawnBallInMiddle();
             _velocity = GetRandomDirection();
-            _velocity.Normalize();
-            Console.WriteLine(_velocity);
+            _ballSpeed = _speed;
         }
         /// <summary>
         /// Clamps the ball so it can't leave the game-window.
         /// </summary>
         private void ClampBall()
         {
-            float windowWidth = _graphicsDevice.Viewport.Width;
-            float windowHeight = _graphicsDevice.Viewport.Height;
+            float windowWidth = _device.Viewport.Width;
+            float windowHeight = _device.Viewport.Height;
 
             _position = new Vector2(Math.Clamp(_position.X, 0, windowWidth - HitBox.Width), Math.Clamp(_position.Y, 0, windowHeight - HitBox.Height));
         }
@@ -61,7 +47,8 @@ namespace J3P2_Monogame_Project.monoPong.Thom
         private void BallMovement(GameTime pGameTime)
         {
             //Update position every frame
-            
+
+            _velocity = Vector2.Normalize(_velocity);
             _position = _position + _velocity * (float)pGameTime.ElapsedGameTime.TotalSeconds * _speed;
         }
         /// <summary>
@@ -69,19 +56,34 @@ namespace J3P2_Monogame_Project.monoPong.Thom
         /// </summary>
         public void BallCollision()
         {
+            Console.WriteLine(HitBox);
             //Invert velocity
-            if (_position.X < 0 || _position.X > _graphicsDevice.Viewport.Width - HitBox.Width)
+            if (_position.X < 0 || _position.X > _device.Viewport.Width - 10.0f)
             {
-                _velocity.X *= -1;
+                //_velocity.X *= -1;
+                SpawnBallInMiddle();
             }
-            if (_position.Y < 0 || _position.Y > _graphicsDevice.Viewport.Height - HitBox.Height)
+            if (_position.Y < 0 || _position.Y > _device.Viewport.Height - 10.0f)
             {
+                //SpawnBallInMiddle();
                 _velocity.Y *= -1;
             }
         }
         private void SpawnBallInMiddle()
         {
-            _position = new Vector2(_graphicsDevice.Viewport.Width / 2, _graphicsDevice.Viewport.Height / 2);
+            _position = new Vector2(_device.Viewport.Width / 2, _device.Viewport.Height / 2);
+            _velocity = GetRandomDirection();
+            if (!firstTime)
+            {
+                _speed = _ballSpeed;
+            }
+            firstTime = false;
+        }
+        public void AddBallSpeed()
+        {
+            float addedBallSpeed;
+            addedBallSpeed = ((_ballSpeed / 10) + 10 * 2.25f);
+            _speed += addedBallSpeed;
         }
         private Vector2 GetRandomDirection()
         {
@@ -102,12 +104,12 @@ namespace J3P2_Monogame_Project.monoPong.Thom
         public override void Draw(SpriteBatch pSpriteBatch)
         {
             //base.Draw(pSpriteBatch);
-            DrawRectangle(pSpriteBatch);
+            base.Draw(pSpriteBatch);
         }
-        public override void DrawRectangle(SpriteBatch pSpriteBatch)
-        {
-            base.DrawRectangle(pSpriteBatch);
-        }
+        //public override void DrawRectangle(SpriteBatch pSpriteBatch)
+        //{
+        //    base.DrawRectangle(pSpriteBatch);
+        //}
 
     }
 }
