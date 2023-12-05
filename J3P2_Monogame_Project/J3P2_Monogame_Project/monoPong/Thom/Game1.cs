@@ -29,7 +29,7 @@ namespace J3P2_Monogame_Project.monoPong.Thom
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            _ball = new Ball(new Vector2(100, 100), 1, Content.Load<Texture2D>("BallTexture"), 120.0f, GraphicsDevice, Color.White);
+            _ball = new Ball(new Vector2(100, 100), 1, Content.Load<Texture2D>("BallTexture"), 120.0f, GraphicsDevice);
             testPaddle = new Paddle(new Vector2(50, 50), 0.5f, Content.Load<Texture2D>("Paddle"), 0, _ball);
             testPaddle2 = new Paddle(new Vector2(750, 50), 0.5f, Content.Load<Texture2D>("Paddle"), 1, _ball);
             testPaddle3 = new Paddle(new Vector2(450, 50), 0.5f, Content.Load<Texture2D>("PaddleHorizontal"), 2, _ball);

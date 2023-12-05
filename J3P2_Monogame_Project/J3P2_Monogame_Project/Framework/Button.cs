@@ -12,6 +12,7 @@ namespace J3P2_Monogame_Project.Framework
         protected Point _mousePosition;
         protected ButtonState lastMouseClick = Mouse.GetState().LeftButton;
         public int _playerAmount;
+        protected Color _color;
 
         protected enum State
         {
@@ -20,9 +21,9 @@ namespace J3P2_Monogame_Project.Framework
             Pressed
         }
         protected State _currentState;
-        public Button(Vector2 pPosition, float pScale, Texture2D pTexture, Color pColor) : base(pPosition, pScale, pTexture, pColor)
+        public Button(Vector2 pPosition, float pScale, Texture2D pTexture, Color pColor) : base(pPosition, pScale, pTexture)
         {
-            //_textFont = game1.Content.Load<SpriteFont>("BrandonGrotesqueBold");
+            _color = pColor;
         }
         public override void Update(GameTime pGameTime)
         {
@@ -86,6 +87,11 @@ namespace J3P2_Monogame_Project.Framework
         protected virtual void OnClick()
         {
 
+        }
+
+        public override void Draw(SpriteBatch pSpriteBatch)
+        {
+            pSpriteBatch.Draw(_texture, new Vector2(_position.X - (_texture.Width / 2), _position.Y - (_texture.Height / 2)), null, _color, 0, Vector2.Zero, _scale, SpriteEffects.None, 0);
         }
     }
 }

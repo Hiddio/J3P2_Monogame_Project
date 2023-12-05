@@ -11,7 +11,7 @@ namespace J3P2_Monogame_Project.Framework
         protected float _scale;
         protected GraphicsDevice _graphicsDevice;
         protected Rectangle? _hitbox;
-        protected Color _color;
+
 
         protected Texture2D debugTexture;
         public virtual Rectangle HitBox
@@ -36,12 +36,11 @@ namespace J3P2_Monogame_Project.Framework
        /// <param name="pPosition"></param>
        /// <param name="pScale"></param>
        /// <param name="pTexture"></param>
-        public GameObject(Vector2 pPosition, float pScale, Texture2D pTexture, Color pColor)
+        public GameObject(Vector2 pPosition, float pScale, Texture2D pTexture)
         {
             _position = pPosition;
             _scale = pScale;
             _texture = pTexture;
-            _color = pColor;
         }
         /// <summary>
         /// This is for a no-sprite gameobject
@@ -49,19 +48,7 @@ namespace J3P2_Monogame_Project.Framework
         /// <param name="pPosition"></param>
         /// <param name="pScale"></param>
         /// <param name="pGraphicsDevice"></param>
-        public GameObject(Vector2 pPosition, GraphicsDevice pGraphicsDevice, Rectangle pRectangle)
-        {
-            _position = pPosition;
-            _scale = 1;
-            _graphicsDevice = pGraphicsDevice;
-            _hitbox = pRectangle;
-
-            // make a new Texture 1x1
-            debugTexture = new Texture2D(_graphicsDevice, 1, 1);
-            // Set the colour of the texture to red
-            debugTexture.SetData(new Color[] { Color.Red });
-
-        }
+        
         public virtual void Update(GameTime pGameTime)
         {   
         } 
@@ -70,7 +57,7 @@ namespace J3P2_Monogame_Project.Framework
         }
         public virtual void Draw(SpriteBatch pSpriteBatch)
         {
-            pSpriteBatch.Draw(_texture, new Vector2(_position.X - (_texture.Width / 2), _position.Y - (_texture.Height / 2)), null, _color, 0, Vector2.Zero, _scale, SpriteEffects.None, 0);
+            pSpriteBatch.Draw(_texture, new Vector2(_position.X - (_texture.Width / 2), _position.Y - (_texture.Height / 2)), null, Color.White, 0, Vector2.Zero, _scale, SpriteEffects.None, 0);
         }
         /// <summary>
         /// Draw the rectangle.
