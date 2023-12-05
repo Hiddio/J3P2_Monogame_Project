@@ -19,7 +19,7 @@ namespace J3P2_Monogame_Project.monoPong
         {
             _game = pGame;
         }
-        public override void LoadContent(SceneManager sceneManager)
+        public override void LoadContent(SceneManager sceneManager, GraphicsDeviceManager pGraphics)
         {
             Texture2D textureButtonTwo = _game.Content.Load<Texture2D>("ButtonTextureTwo");
             Texture2D textureButtonThree = _game.Content.Load<Texture2D>("ButtonTextureThree");
@@ -34,7 +34,7 @@ namespace J3P2_Monogame_Project.monoPong
             _gameObjects.Add(_twoPlayerButton);
             _gameObjects.Add(_threePlayerButton);
             _gameObjects.Add(_fourPlayerButton);
-            base.LoadContent(sceneManager);
+            base.LoadContent(sceneManager, pGraphics);
         }
 
         public override void Draw()

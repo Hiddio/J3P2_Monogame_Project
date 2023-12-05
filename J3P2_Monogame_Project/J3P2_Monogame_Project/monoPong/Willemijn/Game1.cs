@@ -53,7 +53,7 @@ namespace J3P2_Monogame_Project.monoPong.Willemijn
 
             for (int i = 0; i < _scenes.Count; i++)
             {
-                _scenes[i].LoadContent(_sceneManager);
+                _scenes[i].LoadContent(_sceneManager, _graphics);
 
             }
             // TODO: use this.Content to load your game content here

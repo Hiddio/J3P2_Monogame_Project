@@ -15,7 +15,7 @@ namespace J3P2_Monogame_Project.Framework
             _spriteBatch = pSpriteBatch;
             _graphics = pGraphics;
         }
-        public virtual void LoadContent(SceneManager sceneManager)
+        public virtual void LoadContent(SceneManager sceneManager, GraphicsDeviceManager pGraphics)
         {
             for (int i = 0; i < _gameObjects.Count; i++)
             {

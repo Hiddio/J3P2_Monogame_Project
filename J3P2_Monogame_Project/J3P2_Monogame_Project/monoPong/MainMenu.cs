@@ -18,7 +18,7 @@ namespace J3P2_Monogame_Project.monoPong
             _game = game;
         }
 
-        public override void LoadContent(SceneManager sceneManager)
+        public override void LoadContent(SceneManager sceneManager, GraphicsDeviceManager pGraphics)
         {
 
             Texture2D textureButtonPlay = _game.Content.Load<Texture2D>("ButtonTexturePlay");
@@ -28,7 +28,7 @@ namespace J3P2_Monogame_Project.monoPong
 
             _gameObjects.Add(_playButton);
             _gameObjects.Add(_quitButton);
-            base.LoadContent(sceneManager);
+            base.LoadContent(sceneManager, pGraphics);
         }
     }
 }
