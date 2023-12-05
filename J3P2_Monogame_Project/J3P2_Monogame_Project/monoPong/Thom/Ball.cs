@@ -9,9 +9,14 @@ namespace J3P2_Monogame_Project.monoPong.Thom
     {
         public float _speed;
         private float _ballSpeed;
-        public Vector2 _velocity = Vector2.Zero;
+        public Vector2 _velocity = new Vector2(0,0);
         private bool firstTime = true;
         private GraphicsDevice _device;
+
+        float angleInRadians;
+
+        // debug
+        Vector2 newObjectPos = new Vector2(0, 0);
         public Ball(Vector2 pPosition, float pScale, Texture2D pTexture, float pSpeed, GraphicsDevice pGraphicsDevice) : base(pPosition, pScale, pTexture)
         {
             _speed = pSpeed;
@@ -27,7 +32,6 @@ namespace J3P2_Monogame_Project.monoPong.Thom
         public override void Start() 
         {
             SpawnBallInMiddle();
-            _velocity = GetRandomDirection();
             _ballSpeed = _speed;
         }
         /// <summary>
@@ -47,16 +51,24 @@ namespace J3P2_Monogame_Project.monoPong.Thom
         private void BallMovement(GameTime pGameTime)
         {
             //Update position every frame
+            Console.WriteLine(_velocity);
+            //_velocity = Vector2.Normalize(_velocity);
+            //_position = _position + _velocity * (float)pGameTime.ElapsedGameTime.TotalSeconds * _speed;
 
-            _velocity = Vector2.Normalize(_velocity);
-            _position = _position + _velocity * (float)pGameTime.ElapsedGameTime.TotalSeconds * _speed;
+            _velocity.X = _speed * (float)Math.Cos(angleInRadians);
+            _velocity.Y = _speed * (float)Math.Cos(angleInRadians);
+
+
+            _position += _velocity;
+            //_position.X += _velocity.X;
+            //_position.Y += _velocity.Y;
         }
         /// <summary>
         /// Update the ball's hitbox.
         /// </summary>
         public void BallCollision()
         {
-            Console.WriteLine(HitBox);
+           // Console.WriteLine(HitBox); debug for position
             //Invert velocity
             if (_position.X < 0 || _position.X > _device.Viewport.Width - HitBox.Width)
             {
@@ -65,14 +77,14 @@ namespace J3P2_Monogame_Project.monoPong.Thom
             }
             if (_position.Y < 0 || _position.Y > _device.Viewport.Height - HitBox.Height)
             {
-                //SpawnBallInMiddle();
-                _velocity.Y *= -1;
+                SpawnBallInMiddle();
+                _velocity.Y = -_velocity.Y;
             }
         }
         private void SpawnBallInMiddle()
         {
             _position = new Vector2(_device.Viewport.Width / 2, _device.Viewport.Height / 2);
-            _velocity = GetRandomDirection();
+            angleInRadians = GetRandomAngle();
             if (!firstTime)
             {
                 _speed = _ballSpeed;
@@ -85,16 +97,17 @@ namespace J3P2_Monogame_Project.monoPong.Thom
             addedBallSpeed = ((_ballSpeed / 10) + 10 * 2.25f);
             _speed += addedBallSpeed;
         }
-        private Vector2 GetRandomDirection()
+        private float GetRandomAngle()
         {
-            /*
-             * 
-             * GET V2 X,Y RANDOM NUMBERS BETWEEN 60,-60 AND 150,210
-             * 
-             * */
-            Random random = new Random();
-            // Returns a random floating-point number between -1 and 1
-            return new Vector2((float)(random.NextDouble() * 2 - 1), (float)(random.NextDouble() * 2 - 1));
+            float angle;
+            Random rng = new Random();
+            do
+            {
+                angle = rng.Next(1, 361);
+            }
+            while (!(angle >= 0 && angle <= 120) && (angle < 150 || angle > 210));
+            Console.WriteLine(angle);
+            return angle;
         }
 
         // bounce ball against walls

@@ -102,7 +102,7 @@ namespace J3P2_Monogame_Project.monoPong
                 }
                 _ball.AddBallSpeed();
             }
-            Console.WriteLine(_ball._speed);
+            //Console.WriteLine(_ball._speed);
         }
     }
 }
