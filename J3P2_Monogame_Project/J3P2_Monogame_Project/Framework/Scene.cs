@@ -17,7 +17,10 @@ namespace J3P2_Monogame_Project.Framework
         }
         public virtual void LoadContent(SceneManager sceneManager)
         {
-
+            for (int i = 0; i < _gameObjects.Count; i++)
+            {
+                _gameObjects[i].Start();
+            }
         }
         public virtual void Update(GameTime gameTime)
         {

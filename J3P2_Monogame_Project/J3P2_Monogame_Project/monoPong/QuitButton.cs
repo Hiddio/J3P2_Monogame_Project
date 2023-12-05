@@ -14,7 +14,7 @@ namespace J3P2_Monogame_Project.monoPong
     class QuitButton : Button
     {
         private SceneManager _sceneManager;
-        public QuitButton(Vector2 pPosition, float pScale, Texture2D pTexture, SceneManager pSceneManager) : base(pPosition, pScale, pTexture, Color.White)
+        public QuitButton(Vector2 pPosition, Texture2D pTexture, SceneManager pSceneManager) : base(pPosition, pTexture, Color.White)
         {
             _sceneManager = pSceneManager;
         }

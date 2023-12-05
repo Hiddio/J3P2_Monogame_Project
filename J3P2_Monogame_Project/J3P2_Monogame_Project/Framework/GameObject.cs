@@ -14,6 +14,22 @@ namespace J3P2_Monogame_Project.Framework
 
 
         protected Texture2D debugTexture;
+
+
+       /// <summary>
+       /// This is for a sprite gameobject
+       /// </summary>
+       /// <param name="pPosition"></param>
+       /// <param name="pScale"></param>
+       /// <param name="pTexture"></param>
+        public GameObject(Vector2 pPosition, Texture2D pTexture)
+        {
+            _position = pPosition;
+            _scale = 1.8f;
+            _texture = pTexture;
+        }
+        
+        
         public virtual Rectangle HitBox
         {
             // only has getter, it cannot be set to a value from anywhere
@@ -30,25 +46,6 @@ namespace J3P2_Monogame_Project.Framework
                 return rect;
             }
         }
-       /// <summary>
-       /// This is for a sprite gameobject
-       /// </summary>
-       /// <param name="pPosition"></param>
-       /// <param name="pScale"></param>
-       /// <param name="pTexture"></param>
-        public GameObject(Vector2 pPosition, float pScale, Texture2D pTexture)
-        {
-            _position = pPosition;
-            _scale = pScale;
-            _texture = pTexture;
-        }
-        /// <summary>
-        /// This is for a no-sprite gameobject
-        /// </summary>
-        /// <param name="pPosition"></param>
-        /// <param name="pScale"></param>
-        /// <param name="pGraphicsDevice"></param>
-        
         public virtual void Update(GameTime pGameTime)
         {   
         } 

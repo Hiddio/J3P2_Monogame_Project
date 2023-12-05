@@ -21,7 +21,7 @@ namespace J3P2_Monogame_Project.Framework
             Pressed
         }
         protected State _currentState;
-        public Button(Vector2 pPosition, float pScale, Texture2D pTexture, Color pColor) : base(pPosition, pScale, pTexture)
+        public Button(Vector2 pPosition, Texture2D pTexture, Color pColor) : base(pPosition, pTexture)
         {
             _color = pColor;
         }

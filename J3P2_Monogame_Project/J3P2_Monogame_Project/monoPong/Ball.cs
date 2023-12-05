@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using J3P2_Monogame_Project.Framework;
 using System;
 
-namespace J3P2_Monogame_Project.monoPong.Thom
+namespace J3P2_Monogame_Project.monoPong
 {
     internal class Ball : GameObject
     {
@@ -12,7 +12,7 @@ namespace J3P2_Monogame_Project.monoPong.Thom
         public Vector2 _velocity = Vector2.Zero;
         private bool firstTime = true;
         private GraphicsDevice _device;
-        public Ball(Vector2 pPosition, float pScale, Texture2D pTexture, float pSpeed, GraphicsDevice pGraphicsDevice) : base(pPosition, pScale, pTexture)
+        public Ball(Vector2 pPosition, Texture2D pTexture, float pSpeed, GraphicsDevice pGraphicsDevice) : base(pPosition, pTexture)
         {
             _speed = pSpeed;
             _device = pGraphicsDevice;
@@ -24,7 +24,7 @@ namespace J3P2_Monogame_Project.monoPong.Thom
             BallMovement(pGameTime);
             BallCollision();
         }
-        public override void Start() 
+        public override void Start()
         {
             SpawnBallInMiddle();
             _velocity = GetRandomDirection();
@@ -82,7 +82,7 @@ namespace J3P2_Monogame_Project.monoPong.Thom
         public void AddBallSpeed()
         {
             float addedBallSpeed;
-            addedBallSpeed = ((_ballSpeed / 10) + 10 * 2.25f);
+            addedBallSpeed = _ballSpeed / 10 + 10 * 2.25f;
             _speed += addedBallSpeed;
         }
         private Vector2 GetRandomDirection()
