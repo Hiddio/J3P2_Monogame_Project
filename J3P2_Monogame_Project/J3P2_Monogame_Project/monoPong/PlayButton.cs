@@ -14,7 +14,7 @@ namespace J3P2_Monogame_Project.monoPong
     class PlayButton : Button
     {
         SceneManager _sceneManager;
-        public PlayButton(Vector2 pPosition, float pScale, GraphicsDevice pGraphics, Rectangle pRectangle, SceneManager pSceneManager) : base(pPosition, pScale, pGraphics, pRectangle)
+        public PlayButton(Vector2 pPosition, float pScale, Texture2D pTexture, SceneManager pSceneManager) : base(pPosition, pScale, pTexture, Color.White)
         {
             _sceneManager = pSceneManager;
         }
