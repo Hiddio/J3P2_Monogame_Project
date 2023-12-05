@@ -21,7 +21,7 @@ namespace J3P2_Monogame_Project.monoPong
 
         protected override void PressedMode()
         {
-            _sceneManager.ChangeScene(1);
+            _sceneManager.ChangeScene(_sceneManager.GetCurrentSceneInt() + 1);
         }
     }
 }
