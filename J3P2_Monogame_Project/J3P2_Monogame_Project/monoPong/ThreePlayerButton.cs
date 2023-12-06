@@ -14,7 +14,7 @@ namespace J3P2_Monogame_Project.monoPong
     class ThreePlayerButton : Button
     {
         private SceneManager _sceneManager;
-        public ThreePlayerButton(Vector2 pPosition, Texture2D pTexture, SceneManager pSceneManager) : base(pPosition, pTexture, Color.White)
+        public ThreePlayerButton(Vector2 pPosition, float pScale, Texture2D pTexture, SceneManager pSceneManager) : base(pPosition, pScale, pTexture, Color.White)
         {
             _sceneManager = pSceneManager;
         }

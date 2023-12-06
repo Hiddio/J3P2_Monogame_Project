@@ -22,10 +22,10 @@ namespace J3P2_Monogame_Project.Framework
        /// <param name="pPosition"></param>
        /// <param name="pScale"></param>
        /// <param name="pTexture"></param>
-        public GameObject(Vector2 pPosition, Texture2D pTexture)
+        public GameObject(Vector2 pPosition, float pScale ,Texture2D pTexture)
         {
             _position = pPosition;
-            _scale = 1.8f;
+            _scale = pScale;
             _texture = pTexture;
         }
         
@@ -54,7 +54,7 @@ namespace J3P2_Monogame_Project.Framework
         }
         public virtual void Draw(SpriteBatch pSpriteBatch)
         {
-            pSpriteBatch.Draw(_texture, new Vector2(_position.X - (_texture.Width / 2), _position.Y - (_texture.Height / 2)), null, Color.White, 0, Vector2.Zero, _scale, SpriteEffects.None, 0);
+            pSpriteBatch.Draw(_texture, new Vector2(_position.X - (_texture.Width / 2), _position.Y - (_texture.Height / 2)), null, Color.White, 1, Vector2.Zero, _scale, SpriteEffects.None, 0);
         }
         /// <summary>
         /// Draw the rectangle.

@@ -12,7 +12,7 @@ namespace J3P2_Monogame_Project.monoPong
         public Vector2 _velocity = Vector2.Zero;
         private bool firstTime = true;
         private GraphicsDevice _device;
-        public Ball(Vector2 pPosition, Texture2D pTexture, float pSpeed, GraphicsDevice pGraphicsDevice) : base(pPosition, pTexture)
+        public Ball(Vector2 pPosition, float pScale ,Texture2D pTexture, float pSpeed, GraphicsDevice pGraphicsDevice) : base(pPosition, pScale, pTexture)
         {
             _speed = pSpeed;
             _device = pGraphicsDevice;

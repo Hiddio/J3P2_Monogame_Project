@@ -30,7 +30,7 @@ namespace J3P2_Monogame_Project.monoPong
             
             Texture2D textureButtonPlay = _game.Content.Load<Texture2D>("ButtonTexturePlay");
             _textFont = _game.Content.Load<SpriteFont>("SpriteFont");
-            PlayButton _playButton = new PlayButton(new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2 + (textureButtonPlay.Width / 4), (_graphics.GraphicsDevice.Viewport.Height / 2) + (textureButtonPlay.Height / 4) + 50), textureButtonPlay, sceneManager);
+            PlayButton _playButton = new PlayButton(new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2 + (textureButtonPlay.Width / 4), (_graphics.GraphicsDevice.Viewport.Height / 2) + (textureButtonPlay.Height / 4) + 50), 1.8f, textureButtonPlay, sceneManager);
             text1 = "MonoPong is a two-dimensional table tennis game in which";
             text2 = "you move your paddle to defend your wall from the ball.";
             text3 = "If the ball hits the paddle it bounces back,";

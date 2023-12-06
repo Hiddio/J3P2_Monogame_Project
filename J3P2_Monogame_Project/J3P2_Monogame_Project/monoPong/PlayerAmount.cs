@@ -25,9 +25,9 @@ namespace J3P2_Monogame_Project.monoPong
             Texture2D textureButtonThree = _game.Content.Load<Texture2D>("ButtonTextureThree");
             Texture2D textureButtonFour = _game.Content.Load<Texture2D>("ButtonTextureFour");
             _textFont = _game.Content.Load<SpriteFont>("SpriteFont");
-            TwoPlayerButton _twoPlayerButton = new TwoPlayerButton(new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2 + (textureButtonTwo.Width / 4), (_graphics.GraphicsDevice.Viewport.Height / 2) + (textureButtonTwo.Height / 4) - 100), textureButtonTwo, sceneManager);
-            ThreePlayerButton _threePlayerButton = new ThreePlayerButton(new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2 + (textureButtonThree.Width / 4), (_graphics.GraphicsDevice.Viewport.Height / 2) + (textureButtonThree.Height / 4)), textureButtonThree, sceneManager);
-            FourPlayerButton _fourPlayerButton = new FourPlayerButton(new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2 + (textureButtonFour.Width / 4), (_graphics.GraphicsDevice.Viewport.Height / 2) + (textureButtonFour.Height / 4) + 100), textureButtonFour, sceneManager);
+            TwoPlayerButton _twoPlayerButton = new TwoPlayerButton(new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2 + (textureButtonTwo.Width / 4), (_graphics.GraphicsDevice.Viewport.Height / 2) + (textureButtonTwo.Height / 4) - 100), 1.8f, textureButtonTwo, sceneManager);
+            ThreePlayerButton _threePlayerButton = new ThreePlayerButton(new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2 + (textureButtonThree.Width / 4), (_graphics.GraphicsDevice.Viewport.Height / 2) + (textureButtonThree.Height / 4)), 1.8f, textureButtonThree, sceneManager);
+            FourPlayerButton _fourPlayerButton = new FourPlayerButton(new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2 + (textureButtonFour.Width / 4), (_graphics.GraphicsDevice.Viewport.Height / 2) + (textureButtonFour.Height / 4) + 100), 1.8f, textureButtonFour, sceneManager);
 
             _text1 = "Choose the amount of players:";
             
