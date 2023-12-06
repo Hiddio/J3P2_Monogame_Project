@@ -12,13 +12,13 @@ namespace J3P2_Monogame_Project.monoPong.Thom
         private SpriteBatch _spriteBatch;
         private Ball _ball;
         SpriteFont _font;
+
+        private Wall _wall;
         Paddle testPaddle;
         Paddle testPaddle2;
         Paddle testPaddle3;
         Paddle testPaddle4;
-        Dictionary<Paddle, int> testPaddleDictionary = new Dictionary<Paddle, int>();
-        WinOrLoseManager _manager;
-        private List<GameObject> _objects = new List<GameObject>();
+        public List<GameObject> _objects = new List<GameObject>();
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -38,14 +38,7 @@ namespace J3P2_Monogame_Project.monoPong.Thom
             testPaddle3 = new Paddle(new Vector2(450, 50), 0.5f, Content.Load<Texture2D>("PaddleHorizontal"), 2, _ball);
             testPaddle4 = new Paddle(new Vector2(450, 450), 0.5f, Content.Load<Texture2D>("PaddleHorizontal"), 3, _ball);
             _font = Content.Load<SpriteFont>("spritefont");
-
-
-            testPaddleDictionary.Add(testPaddle, 3);
-            testPaddleDictionary.Add(testPaddle2, 3);
-            testPaddleDictionary.Add(testPaddle3, 3);
-            testPaddleDictionary.Add(testPaddle4, 3);
-
-            _manager = new WinOrLoseManager(testPaddleDictionary, _ball, GraphicsDevice, _font);
+            _wall = new Wall(GraphicsDevice, _ball, testPaddle, this);
             //Objects
             _objects.Add(_ball);
             _objects.Add(testPaddle);
@@ -70,9 +63,8 @@ namespace J3P2_Monogame_Project.monoPong.Thom
             {
                 _objects[i].Update(gameTime);
             }
-            _manager.Update();
+            _wall.Update();
         }
-
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
