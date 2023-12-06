@@ -11,6 +11,7 @@ namespace J3P2_Monogame_Project.monoPong.Thom
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private Ball _ball;
+        SpriteFont _font;
         Paddle testPaddle;
         Paddle testPaddle2;
         Paddle testPaddle3;
@@ -36,12 +37,15 @@ namespace J3P2_Monogame_Project.monoPong.Thom
             testPaddle2 = new Paddle(new Vector2(750, 50), 0.5f, Content.Load<Texture2D>("Paddle"), 1, _ball);
             testPaddle3 = new Paddle(new Vector2(450, 50), 0.5f, Content.Load<Texture2D>("PaddleHorizontal"), 2, _ball);
             testPaddle4 = new Paddle(new Vector2(450, 450), 0.5f, Content.Load<Texture2D>("PaddleHorizontal"), 3, _ball);
-            testPaddleDictionary.Add(testPaddle, 1);
-            testPaddleDictionary.Add(testPaddle2, 2);
-            testPaddleDictionary.Add(testPaddle3, 3);
-            testPaddleDictionary.Add(testPaddle4, 4);
+            _font = Content.Load<SpriteFont>("spritefont");
 
-            _manager = new WinOrLoseManager(testPaddleDictionary);
+
+            testPaddleDictionary.Add(testPaddle, 3);
+            testPaddleDictionary.Add(testPaddle2, 3);
+            testPaddleDictionary.Add(testPaddle3, 3);
+            testPaddleDictionary.Add(testPaddle4, 3);
+
+            _manager = new WinOrLoseManager(testPaddleDictionary, _ball, GraphicsDevice, _font);
             //Objects
             _objects.Add(_ball);
             _objects.Add(testPaddle);
