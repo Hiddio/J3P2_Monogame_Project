@@ -5,7 +5,7 @@ using System;
 
 namespace J3P2_Monogame_Project.monoPong.Thom
 {
-    internal class Ball : GameObject
+    public class Ball : GameObject
     {
         public float _speed;
         private float _ballSpeed;

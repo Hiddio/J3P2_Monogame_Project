@@ -6,7 +6,7 @@ using System;
 
 namespace J3P2_Monogame_Project.monoPong
 {
-    class Paddle : Framework.GameObject
+    public class Paddle : Framework.GameObject
     {
         Vector2 _direction;
         int _paddleNumber;

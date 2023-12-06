@@ -15,6 +15,8 @@ namespace J3P2_Monogame_Project.monoPong.Thom
         Paddle testPaddle2;
         Paddle testPaddle3;
         Paddle testPaddle4;
+        Dictionary<Paddle, int> testPaddleDictionary = new Dictionary<Paddle, int>();
+        WinOrLoseManager _manager;
         private List<GameObject> _objects = new List<GameObject>();
         public Game1()
         {
@@ -34,7 +36,12 @@ namespace J3P2_Monogame_Project.monoPong.Thom
             testPaddle2 = new Paddle(new Vector2(750, 50), 0.5f, Content.Load<Texture2D>("Paddle"), 1, _ball);
             testPaddle3 = new Paddle(new Vector2(450, 50), 0.5f, Content.Load<Texture2D>("PaddleHorizontal"), 2, _ball);
             testPaddle4 = new Paddle(new Vector2(450, 450), 0.5f, Content.Load<Texture2D>("PaddleHorizontal"), 3, _ball);
+            testPaddleDictionary.Add(testPaddle, 1);
+            testPaddleDictionary.Add(testPaddle2, 2);
+            testPaddleDictionary.Add(testPaddle3, 3);
+            testPaddleDictionary.Add(testPaddle4, 4);
 
+            _manager = new WinOrLoseManager(testPaddleDictionary);
             //Objects
             _objects.Add(_ball);
             _objects.Add(testPaddle);
@@ -59,6 +66,7 @@ namespace J3P2_Monogame_Project.monoPong.Thom
             {
                 _objects[i].Update(gameTime);
             }
+            _manager.Update();
         }
 
         protected override void Draw(GameTime gameTime)
