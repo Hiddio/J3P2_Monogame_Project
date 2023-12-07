@@ -29,11 +29,11 @@ namespace J3P2_Monogame_Project.monoPong
             Texture2D textureButtonMenu = _game.Content.Load<Texture2D>("ButtonTexturePlay");
             _backGround = new GameObject(new Vector2(pGraphics.PreferredBackBufferWidth / 2, pGraphics.PreferredBackBufferHeight / 2), 1f, _game.Content.Load<Texture2D>("BackGround"));
             _ball = new Ball(new Vector2(100, 100), 1.8f, _game.Content.Load<Texture2D>("BallTexture"), 120.0f, _device);
-            testPaddle = new Paddle(new Vector2(pGraphics.PreferredBackBufferWidth / 2, pGraphics.PreferredBackBufferHeight / 2), 1.8f, _game.Content.Load<Texture2D>("Paddle"), 0, _ball);
-            testPaddle2 = new Paddle(new Vector2(pGraphics.PreferredBackBufferWidth / 2, pGraphics.PreferredBackBufferHeight / 2), 1.8f, _game.Content.Load<Texture2D>("Paddle"), 1, _ball);
-            testPaddle3 = new Paddle(new Vector2(pGraphics.PreferredBackBufferWidth / 2, pGraphics.PreferredBackBufferHeight / 2), 1.8f, _game.Content.Load<Texture2D>("PaddleHorizontal"), 2, _ball);
-            testPaddle4 = new Paddle(new Vector2(pGraphics.PreferredBackBufferWidth / 2, pGraphics.PreferredBackBufferHeight / 2), 1.8f, _game.Content.Load<Texture2D>("PaddleHorizontal"), 3, _ball);
             MenuButton menuButton = new MenuButton(new Vector2(_graphics.GraphicsDevice.Viewport.Width - textureButtonMenu.Width - 20, 150), 1.8f, textureButtonMenu, sceneManager);
+            testPaddle = new Paddle(new Vector2(pGraphics.PreferredBackBufferWidth / 2 - 530, pGraphics.PreferredBackBufferHeight / 2), 1.8f, _game.Content.Load<Texture2D>("Paddle"), 0, _ball);
+            testPaddle2 = new Paddle(new Vector2(pGraphics.PreferredBackBufferWidth / 2 + 530, pGraphics.PreferredBackBufferHeight / 2), 1.8f, _game.Content.Load<Texture2D>("Paddle"), 1, _ball);
+            testPaddle3 = new Paddle(new Vector2(pGraphics.PreferredBackBufferWidth / 2, pGraphics.PreferredBackBufferHeight / 2 + 500), 1.8f, _game.Content.Load<Texture2D>("PaddleHorizontal"), 2, _ball);
+            testPaddle4 = new Paddle(new Vector2(pGraphics.PreferredBackBufferWidth / 2, pGraphics.PreferredBackBufferHeight / 2 - 500), 1.8f, _game.Content.Load<Texture2D>("PaddleHorizontal"), 3, _ball);
 
             _gameObjects.Add(_backGround);
             _gameObjects.Add(_ball);
