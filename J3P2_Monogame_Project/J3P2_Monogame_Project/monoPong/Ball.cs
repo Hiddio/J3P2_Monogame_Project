@@ -56,7 +56,7 @@ namespace J3P2_Monogame_Project.monoPong
         {
             Console.WriteLine(HitBox);
             //Invert velocity
-            if (_position.X < 0 || _position.X > _device.Viewport.Width - HitBox.Width)
+            if (_position.X < _device.Viewport.Width / 2 - 560 || _position.X > _device.Viewport.Width / 2 + 560 - HitBox.Width)
             {
                 //_velocity.X *= -1;
                 _velocity.X *= -1;
