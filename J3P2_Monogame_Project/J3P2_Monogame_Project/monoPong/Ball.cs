@@ -59,7 +59,7 @@ namespace J3P2_Monogame_Project.monoPong
             if (_position.X < 0 || _position.X > _device.Viewport.Width - HitBox.Width)
             {
                 //_velocity.X *= -1;
-                SpawnBallInMiddle();
+                _velocity.X *= -1;
             }
             if (_position.Y < 0 || _position.Y > _device.Viewport.Height - HitBox.Height)
             {
@@ -67,7 +67,7 @@ namespace J3P2_Monogame_Project.monoPong
                 _velocity.Y *= -1;
             }
         }
-        private void SpawnBallInMiddle()
+        public void SpawnBallInMiddle()
         {
             _position = new Vector2(_device.Viewport.Width / 2, _device.Viewport.Height / 2);
             _velocity = GetRandomDirection();

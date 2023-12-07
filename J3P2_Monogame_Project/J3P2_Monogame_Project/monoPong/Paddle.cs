@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using J3P2_Monogame_Project.monoPong.Willemijn;
 using System;
 
 namespace J3P2_Monogame_Project.monoPong
@@ -10,10 +11,14 @@ namespace J3P2_Monogame_Project.monoPong
         Vector2 _direction;
         int _paddleNumber;
         Ball _ball;
-        public Paddle(Vector2 pPosition, float pScale, Texture2D pTexture, int pPaddleNumber, Ball pBall) : base(pPosition, pScale, pTexture)
+        public int paddleLives = 3;
+        public bool isActive = true;
+        private SpriteFont _font;
+        public Paddle(Vector2 pPosition, float pScale, Texture2D pTexture, int pPaddleNumber, Ball pBall, SpriteFont pFont) : base(pPosition, pScale, pTexture)
         {
             _paddleNumber = pPaddleNumber;
             _ball = pBall;
+            _font = pFont;
         }
 
         public override void Update(GameTime pGameTime)
@@ -106,6 +111,11 @@ namespace J3P2_Monogame_Project.monoPong
         public void KillPaddle()
         {
             
+        }
+        public override void Draw(SpriteBatch pSpriteBatch)
+        {
+            base.Draw(pSpriteBatch);
+            pSpriteBatch.DrawString(_font, paddleLives.ToString(), new Vector2(_position.X, _position.Y), Color.White);
         }
     }
 }
