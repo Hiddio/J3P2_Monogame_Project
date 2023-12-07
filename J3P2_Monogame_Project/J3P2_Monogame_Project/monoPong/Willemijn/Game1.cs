@@ -24,9 +24,9 @@ namespace J3P2_Monogame_Project.monoPong.Willemijn
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            //_graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
-            //_graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
-            //_graphics.IsFullScreen = true;
+            _graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+            _graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+            _graphics.IsFullScreen = true;
             _graphics.ApplyChanges();
             
             base.Initialize();
@@ -40,18 +40,20 @@ namespace J3P2_Monogame_Project.monoPong.Willemijn
             PopupGoal sceneGoal = new PopupGoal(_spriteBatch, this, _graphics);
             PopupMovement sceneMovement = new PopupMovement(_spriteBatch, this, _graphics);
             PlayerAmount scenePlayerAmount = new PlayerAmount(_spriteBatch, this, _graphics);
+            GameScene sceneGame = new GameScene(_spriteBatch, this, _graphics, GraphicsDevice);
 
             _scenes.Add(sceneMenu);
             _scenes.Add(sceneExplanation);
             _scenes.Add(sceneGoal);
             _scenes.Add(sceneMovement);
             _scenes.Add(scenePlayerAmount);
+            _scenes.Add(sceneGame);
 
             _sceneManager = new SceneManager(_graphics, _spriteBatch, this, _scenes);
 
             for (int i = 0; i < _scenes.Count; i++)
             {
-                _scenes[i].LoadContent(_sceneManager);
+                _scenes[i].LoadContent(_sceneManager, _graphics);
 
             }
             // TODO: use this.Content to load your game content here

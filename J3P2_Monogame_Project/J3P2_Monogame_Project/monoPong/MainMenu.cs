@@ -18,17 +18,17 @@ namespace J3P2_Monogame_Project.monoPong
             _game = game;
         }
 
-        public override void LoadContent(SceneManager sceneManager)
+        public override void LoadContent(SceneManager sceneManager, GraphicsDeviceManager pGraphics)
         {
 
             Texture2D textureButtonPlay = _game.Content.Load<Texture2D>("ButtonTexturePlay");
-            PlayButton _playButton = new PlayButton(new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2 + (textureButtonPlay.Width / 4), (_graphics.GraphicsDevice.Viewport.Height / 2) + (textureButtonPlay.Height / 4) - 50), .5f, textureButtonPlay, sceneManager);
+            PlayButton _playButton = new PlayButton(new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2 - (textureButtonPlay.Width / 2), (_graphics.GraphicsDevice.Viewport.Height / 2) + (textureButtonPlay.Height / 4) - 150), 1.8f, textureButtonPlay, sceneManager);
             Texture2D textureButtonQuit = _game.Content.Load<Texture2D>("ButtonTextureQuit");
-            QuitButton _quitButton = new QuitButton(new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2 + (textureButtonQuit.Width / 4), (_graphics.GraphicsDevice.Viewport.Height / 2) + (textureButtonQuit.Height / 4) + 50), .5f, textureButtonQuit, sceneManager);
+            QuitButton _quitButton = new QuitButton(new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2 - (textureButtonQuit.Width / 2), (_graphics.GraphicsDevice.Viewport.Height / 2) + (textureButtonQuit.Height / 4) + 150), 1.8f, textureButtonQuit, sceneManager);
 
             _gameObjects.Add(_playButton);
             _gameObjects.Add(_quitButton);
-            base.LoadContent(sceneManager);
+            base.LoadContent(sceneManager, pGraphics);
         }
     }
 }

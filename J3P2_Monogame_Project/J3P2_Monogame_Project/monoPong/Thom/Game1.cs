@@ -39,6 +39,7 @@ namespace J3P2_Monogame_Project.monoPong.Thom
             testPaddle4 = new Paddle(new Vector2(450, 450), 0.5f, Content.Load<Texture2D>("PaddleHorizontal"), 3, _ball);
             _font = Content.Load<SpriteFont>("spritefont");
             _wall = new Wall(GraphicsDevice, _ball, testPaddle, this);
+
             //Objects
             _objects.Add(_ball);
             _objects.Add(testPaddle);

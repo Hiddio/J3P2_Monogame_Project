@@ -23,13 +23,13 @@ namespace J3P2_Monogame_Project.monoPong
             _game = pGame;
         }
 
-        public override void LoadContent(SceneManager pSceneManager)
+        public override void LoadContent(SceneManager pSceneManager, GraphicsDeviceManager pGraphics)
         {
 
             Texture2D textureButtonPlay = _game.Content.Load<Texture2D>("ButtonTexturePlay");
             _textFont = _game.Content.Load<SpriteFont>("SpriteFont");
             
-            PlayButton _playButton = new PlayButton(new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2 + (textureButtonPlay.Width / 4), (_graphics.GraphicsDevice.Viewport.Height / 2) + (textureButtonPlay.Height / 4) + 50), .5f, textureButtonPlay, pSceneManager);
+            PlayButton _playButton = new PlayButton(new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2 + (textureButtonPlay.Width / 4), (_graphics.GraphicsDevice.Viewport.Height / 2) + (textureButtonPlay.Height / 4) + 50), 1.8f, textureButtonPlay, pSceneManager);
             text1 = "The left paddle can be moved with W and S.";
             text2 = "The right paddle can be moved with the top and bottom arrows.";
             text3 = "The top and bottom paddles can be moved with the controllers.";
@@ -38,7 +38,7 @@ namespace J3P2_Monogame_Project.monoPong
             texts.Add(text3);
 
             _gameObjects.Add(_playButton);
-            base.LoadContent(pSceneManager);
+            base.LoadContent(pSceneManager, _graphics);
         }
         public override void Draw()
         {

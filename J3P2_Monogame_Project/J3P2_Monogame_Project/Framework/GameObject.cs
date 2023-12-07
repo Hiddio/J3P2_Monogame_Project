@@ -11,9 +11,6 @@ namespace J3P2_Monogame_Project.Framework
         protected float _scale;
         protected GraphicsDevice _graphicsDevice;
         protected Rectangle? _hitbox;
-
-
-        protected Texture2D debugTexture;
         public virtual Rectangle HitBox
         {
             // only has getter, it cannot be set to a value from anywhere
@@ -24,51 +21,41 @@ namespace J3P2_Monogame_Project.Framework
                 // be cause the backingfield is nullable, we get the value cuz struct will be of type Nullable<Rectangle>
                 Rectangle rect = _hitbox.Value;
                 // set the position of the hitbox according to the objects position
-                rect.X = (int)_position.X - (_texture.Width / 2);
-                rect.Y = (int)_position.Y - (_texture.Height / 2);
+                rect.X = (int)_position.X - (_texture.Width * (int)_scale / 2);
+                rect.Y = (int)_position.Y - (_texture.Height * (int)_scale / 2);
                 // return the final hitbox
                 return rect;
             }
         }
+        protected Texture2D debugTexture;
+
+
        /// <summary>
        /// This is for a sprite gameobject
        /// </summary>
        /// <param name="pPosition"></param>
        /// <param name="pScale"></param>
        /// <param name="pTexture"></param>
-        public GameObject(Vector2 pPosition, float pScale, Texture2D pTexture)
+        public GameObject(Vector2 pPosition, float pScale ,Texture2D pTexture)
         {
             _position = pPosition;
             _scale = pScale;
             _texture = pTexture;
         }
-        /// <summary>
-        /// This is for a no-sprite gameobject
-        /// </summary>
-        /// <param name="pPosition"></param>
-        /// <param name="pScale"></param>
-        /// <param name="pGraphicsDevice"></param>
         
         public virtual void Update(GameTime pGameTime)
         {   
+
         } 
         public virtual void Start()
         {
+
         }
         public virtual void Draw(SpriteBatch pSpriteBatch)
         {
-            pSpriteBatch.Draw(_texture, new Vector2(_position.X - (_texture.Width / 2), _position.Y - (_texture.Height / 2)), null, Color.White, 0, Vector2.Zero, _scale, SpriteEffects.None, 0);
+            pSpriteBatch.Draw(_texture, new Vector2(_position.X - (_texture.Width * _scale / 2), _position.Y - (_texture.Height * _scale / 2)), null, Color.White, 0, Vector2.Zero, _scale, SpriteEffects.None, 0);
         }
-        /// <summary>
-        /// Draw the rectangle.
-        /// </summary>
-        /// <param name="pSpriteBatch"></param>
-        public virtual void DrawRectangle(SpriteBatch pSpriteBatch)
-        {
-
-            // draw the rectangle
-            pSpriteBatch.Draw(debugTexture, new Rectangle((int)_position.X, (int)_position.Y, 1 * (int)_scale, 1 * (int)_scale), Color.White);
-        }
+        
         public virtual void DrawString(SpriteBatch pSpriteBatch)
         {
 
