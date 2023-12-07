@@ -37,5 +37,12 @@ namespace J3P2_Monogame_Project.monoPong
             _gameObjects.Add(testPaddle4);
             base.LoadContent(sceneManager, pGraphics);
         }
+        public override void Update(GameTime gameTime)
+        {
+            if (_ball._position.X >= (testPaddle._position.X - 10))
+            {
+                _gameObjects.Remove(testPaddle);
+            }
+        }
     }
 }

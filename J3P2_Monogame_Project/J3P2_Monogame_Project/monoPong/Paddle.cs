@@ -10,7 +10,6 @@ namespace J3P2_Monogame_Project.monoPong
         Vector2 _direction;
         int _paddleNumber;
         Ball _ball;
-        public bool isActive = true;
         public Paddle(Vector2 pPosition, float pScale, Texture2D pTexture, int pPaddleNumber, Ball pBall) : base(pPosition, pScale, pTexture)
         {
             _paddleNumber = pPaddleNumber;

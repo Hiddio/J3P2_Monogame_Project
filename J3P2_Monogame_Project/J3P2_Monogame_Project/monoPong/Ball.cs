@@ -8,7 +8,7 @@ namespace J3P2_Monogame_Project.monoPong
     public class Ball : GameObject
     {
         public float _speed;
-        private float _ballSpeed;
+        private float _ballSpeed; // starting speed
         public Vector2 _velocity = Vector2.Zero;
         private bool firstTime = true;
         private GraphicsDevice _device;
@@ -46,8 +46,6 @@ namespace J3P2_Monogame_Project.monoPong
         /// <param name="pGameTime"></param>
         private void BallMovement(GameTime pGameTime)
         {
-            //Update position every frame
-
             _velocity = Vector2.Normalize(_velocity);
             _position = _position + _velocity * (float)pGameTime.ElapsedGameTime.TotalSeconds * _speed;
         }
@@ -87,29 +85,13 @@ namespace J3P2_Monogame_Project.monoPong
         }
         private Vector2 GetRandomDirection()
         {
-            /*
-             * 
-             * GET V2 X,Y RANDOM NUMBERS BETWEEN 60,-60 AND 150,210
-             * 
-             * */
             Random random = new Random();
             // Returns a random floating-point number between -1 and 1
             return new Vector2((float)(random.NextDouble() * 2 - 1), (float)(random.NextDouble() * 2 - 1));
         }
-
-        // bounce ball against walls
-
-        // ball draw
-
         public override void Draw(SpriteBatch pSpriteBatch)
         {
-            //base.Draw(pSpriteBatch);
             base.Draw(pSpriteBatch);
         }
-        //public override void DrawRectangle(SpriteBatch pSpriteBatch)
-        //{
-        //    base.DrawRectangle(pSpriteBatch);
-        //}
-
     }
 }
