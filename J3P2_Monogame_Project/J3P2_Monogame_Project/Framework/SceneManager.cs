@@ -59,6 +59,13 @@ namespace J3P2_Monogame_Project.Framework
             _game.Exit();
         }
 
+        public void Replay()
+        {
+            Game1 newGame = new Game1();
+            newGame.Run();
+            _game.Exit();
+        }
+
         public int GetCurrentSceneInt()
         {
             return _scenes.IndexOf(_currentScene);
