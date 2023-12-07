@@ -25,7 +25,7 @@ namespace J3P2_Monogame_Project.monoPong
 
         public override void LoadContent(SceneManager pSceneManager, GraphicsDeviceManager pGraphics)
         {
-
+            GameObject _alpacaArnoud = new GameObject(new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2 + 200, _graphics.GraphicsDevice.Viewport.Height / 2 + 400), 1f, (_game.Content.Load<Texture2D>("MonoAlpaca")));
             Texture2D textureButtonPlay = _game.Content.Load<Texture2D>("ButtonTexturePlay");
             _textFont = _game.Content.Load<SpriteFont>("SpriteFont");
             
@@ -37,6 +37,7 @@ namespace J3P2_Monogame_Project.monoPong
             texts.Add(text2);
             texts.Add(text3);
 
+            _gameObjects.Add(_alpacaArnoud);
             _gameObjects.Add(_playButton);
             base.LoadContent(pSceneManager, _graphics);
         }
